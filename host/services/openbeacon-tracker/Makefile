@@ -66,20 +66,23 @@ $(LOGFILE).bz2:
 filters: $(FILTER)
 
 $(FILTER): src/$(FILTER).cpp
-	$(CXX) $(CXXFLAGS) $(CXXOPT) $(LDOPT) -lz $^ -o $@
+#	$(CXX) $(CXXFLAGS) $(CXXOPT) $(LDOPT) -lz $^ -o $@
+	$(CXX) $(CXXFLAGS) $(CXXOPT) $^ -lz -o $@ $(LDOPT)
 
 indent: $(SOURCES)
 	find src -iname '*\.[cph]*' -exec indent -c81 -i4 -cli4 -bli0 -ts 4 \{\} \;
 	rm -f src/*~
 
 $(TARGET): .depend $(OBJS)
-	$(CXX) $(LDFLAGS) $(LDOPT) $(OBJS) -o $@
+#	$(CXX) $(LDFLAGS) $(LDOPT) $(OBJS) -o $@
+	$(CXX) $(OBJS) -o $@ $(LDOPT) $(LDFLAGS)
 
 .depend: $(SOURCES) $(FILTERS)
 	$(CXX) $(CXXFLAGS) $(CXXOPT) -MM $^ > $@
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) $(CXXOPT) -c $< -o $@
+
 
 dependencies-fedora:
 	sudo yum install libpcap libpcap-devel zlib zlib-devel gcc-c++

@@ -34,6 +34,12 @@ typedef struct
 
 static const TReaderItem g_ReaderList[] = {
 
+	//This looks to me like;
+	//{addr, room, floor, group, xpos, ypos}
+
+ 	//CCSR Test Setup
+	{1127, 1, 1, 1, 0, 0},
+
 	// Mikes Lab: group 8
 	{1020, 1, 1, 8, 855, 522},
 	{1021, 1, 1, 8, 610, 522},

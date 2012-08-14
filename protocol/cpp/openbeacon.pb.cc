@@ -2,6 +2,9 @@
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
 #include "openbeacon.pb.h"
+
+#include <algorithm>
+
 #include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
@@ -181,28 +184,28 @@ void protobuf_AddDesc_openbeacon_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020openbeacon.proto\"\303\001\n\nObTracking\022\t\n\001x\030\001"
+    "\n\020openbeacon.proto\"\307\001\n\nObTracking\022\t\n\001x\030\001"
     " \001(\021\022\t\n\001y\030\002 \001(\021\022\t\n\001z\030\003 \001(\021\022\025\n\004unit\030\004 \001(\016"
-    "2\007.ObUnit\022\021\n\treader_id\030\005 \003(\r\022\023\n\013tx_stren"
-    "gth\030\006 \001(\r\022\017\n\007area_id\030\007 \001(\r\022\017\n\007room_id\030\010 "
-    "\001(\r\022\023\n\013building_id\030\t \001(\r\022\027\n\017installation"
-    "_id\030\n \001(\r*\005\010d\020\200\001\":\n\023ObProximityTagPower\022"
-    "\r\n\005power\030\001 \001(\r\022\r\n\005count\030\002 \001(\r*\005\010d\020\200\001\"H\n\016"
-    "ObProximityTag\022\n\n\002id\030\001 \002(\r\022#\n\005power\030\002 \003("
-    "\0132\024.ObProximityTagPower*\005\010d\020\200\001\"U\n\016ObProx"
-    "imityLog\022\014\n\004time\030\001 \002(\r\022\020\n\010duration\030\002 \002(\r"
-    "\022\034\n\003tag\030\003 \003(\0132\017.ObProximityTag*\005\010d\020\200\001\"\352\001"
-    "\n\005ObTag\022\016\n\006tag_id\030\001 \001(\r\022\020\n\010tag_time\030\002 \001("
-    "\r\022\030\n\020tag_power_cycles\030\003 \001(\r\022\024\n\014tag_stren"
-    "gth\030\004 \001(\r\022\024\n\014forwarder_id\030\005 \003(\r\022\036\n\026forwa"
-    "rder_storage_time\030\006 \001(\r\022\017\n\007rx_time\030\007 \001(\004"
-    "\022\035\n\010tracking\030\016 \001(\0132\013.ObTracking\022\"\n\tproxi"
-    "mity\030\017 \003(\0132\017.ObProximityLog*\005\010d\020\200\001*\246\001\n\006O"
-    "bUnit\022\020\n\014OB_UNIT_NONE\020\000\022\021\n\rOB_UNIT_PIXEL"
-    "\020\001\022\026\n\022OB_UNIT_MILLIMETER\020\002\022\026\n\022OB_UNIT_CE"
-    "NTIMETER\020\003\022\021\n\rOB_UNIT_METER\020\004\022\020\n\014OB_UNIT"
-    "_INCH\020\005\022\020\n\014OB_UNIT_FEET\020\006\022\020\n\014OB_UNIT_YAR"
-    "D\020\007", 843);
+    "2\007.ObUnit\022\025\n\treader_id\030\005 \003(\rB\002\020\001\022\023\n\013tx_s"
+    "trength\030\006 \001(\r\022\017\n\007area_id\030\007 \001(\r\022\017\n\007room_i"
+    "d\030\010 \001(\r\022\023\n\013building_id\030\t \001(\r\022\027\n\017installa"
+    "tion_id\030\n \001(\r*\005\010d\020\200\001\":\n\023ObProximityTagPo"
+    "wer\022\r\n\005power\030\001 \001(\r\022\r\n\005count\030\002 \001(\r*\005\010d\020\200\001"
+    "\"H\n\016ObProximityTag\022\n\n\002id\030\001 \002(\r\022#\n\005power\030"
+    "\002 \003(\0132\024.ObProximityTagPower*\005\010d\020\200\001\"U\n\016Ob"
+    "ProximityLog\022\014\n\004time\030\001 \002(\r\022\020\n\010duration\030\002"
+    " \002(\r\022\034\n\003tag\030\003 \003(\0132\017.ObProximityTag*\005\010d\020\200"
+    "\001\"\356\001\n\005ObTag\022\016\n\006tag_id\030\001 \001(\r\022\020\n\010tag_time\030"
+    "\002 \001(\r\022\030\n\020tag_power_cycles\030\003 \001(\r\022\024\n\014tag_s"
+    "trength\030\004 \001(\r\022\030\n\014forwarder_id\030\005 \003(\rB\002\020\001\022"
+    "\036\n\026forwarder_storage_time\030\006 \001(\r\022\017\n\007rx_ti"
+    "me\030\007 \001(\004\022\035\n\010tracking\030\016 \001(\0132\013.ObTracking\022"
+    "\"\n\tproximity\030\017 \003(\0132\017.ObProximityLog*\005\010d\020"
+    "\200\001*\246\001\n\006ObUnit\022\020\n\014OB_UNIT_NONE\020\000\022\021\n\rOB_UN"
+    "IT_PIXEL\020\001\022\026\n\022OB_UNIT_MILLIMETER\020\002\022\026\n\022OB"
+    "_UNIT_CENTIMETER\020\003\022\021\n\rOB_UNIT_METER\020\004\022\020\n"
+    "\014OB_UNIT_INCH\020\005\022\020\n\014OB_UNIT_FEET\020\006\022\020\n\014OB_"
+    "UNIT_YARD\020\007", 851);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "openbeacon.proto", &protobuf_RegisterTypes);
   ObTracking::default_instance_ = new ObTracking();
@@ -351,7 +354,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
                  input, &x_)));
-          _set_bit(0);
+          set_has_x();
         } else {
           goto handle_uninterpreted;
         }
@@ -367,7 +370,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
                  input, &y_)));
-          _set_bit(1);
+          set_has_y();
         } else {
           goto handle_uninterpreted;
         }
@@ -383,7 +386,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
                  input, &z_)));
-          _set_bit(2);
+          set_has_z();
         } else {
           goto handle_uninterpreted;
         }
@@ -408,28 +411,27 @@ bool ObTracking::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_reader_id;
+        if (input->ExpectTag(42)) goto parse_reader_id;
         break;
       }
       
-      // repeated uint32 reader_id = 5;
+      // repeated uint32 reader_id = 5 [packed = true];
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_reader_id:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 1, 40, input, this->mutable_reader_id())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, this->mutable_reader_id())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 42, input, this->mutable_reader_id())));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_reader_id;
         if (input->ExpectTag(48)) goto parse_tx_strength;
         break;
       }
@@ -442,7 +444,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &tx_strength_)));
-          _set_bit(5);
+          set_has_tx_strength();
         } else {
           goto handle_uninterpreted;
         }
@@ -458,7 +460,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &area_id_)));
-          _set_bit(6);
+          set_has_area_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -474,7 +476,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &room_id_)));
-          _set_bit(7);
+          set_has_room_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -490,7 +492,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &building_id_)));
-          _set_bit(8);
+          set_has_building_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -506,7 +508,7 @@ bool ObTracking::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &installation_id_)));
-          _set_bit(9);
+          set_has_installation_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -538,54 +540,58 @@ bool ObTracking::MergePartialFromCodedStream(
 void ObTracking::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional sint32 x = 1;
-  if (_has_bit(0)) {
+  if (has_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->x(), output);
   }
   
   // optional sint32 y = 2;
-  if (_has_bit(1)) {
+  if (has_y()) {
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->y(), output);
   }
   
   // optional sint32 z = 3;
-  if (_has_bit(2)) {
+  if (has_z()) {
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->z(), output);
   }
   
   // optional .ObUnit unit = 4;
-  if (_has_bit(3)) {
+  if (has_unit()) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       4, this->unit(), output);
   }
   
-  // repeated uint32 reader_id = 5;
+  // repeated uint32 reader_id = 5 [packed = true];
+  if (this->reader_id_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(5, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_reader_id_cached_byte_size_);
+  }
   for (int i = 0; i < this->reader_id_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
-      5, this->reader_id(i), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->reader_id(i), output);
   }
   
   // optional uint32 tx_strength = 6;
-  if (_has_bit(5)) {
+  if (has_tx_strength()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->tx_strength(), output);
   }
   
   // optional uint32 area_id = 7;
-  if (_has_bit(6)) {
+  if (has_area_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->area_id(), output);
   }
   
   // optional uint32 room_id = 8;
-  if (_has_bit(7)) {
+  if (has_room_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->room_id(), output);
   }
   
   // optional uint32 building_id = 9;
-  if (_has_bit(8)) {
+  if (has_building_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->building_id(), output);
   }
   
   // optional uint32 installation_id = 10;
-  if (_has_bit(9)) {
+  if (has_installation_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(10, this->installation_id(), output);
   }
   
@@ -602,54 +608,62 @@ void ObTracking::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ObTracking::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional sint32 x = 1;
-  if (_has_bit(0)) {
+  if (has_x()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->x(), target);
   }
   
   // optional sint32 y = 2;
-  if (_has_bit(1)) {
+  if (has_y()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->y(), target);
   }
   
   // optional sint32 z = 3;
-  if (_has_bit(2)) {
+  if (has_z()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->z(), target);
   }
   
   // optional .ObUnit unit = 4;
-  if (_has_bit(3)) {
+  if (has_unit()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       4, this->unit(), target);
   }
   
-  // repeated uint32 reader_id = 5;
+  // repeated uint32 reader_id = 5 [packed = true];
+  if (this->reader_id_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      5,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _reader_id_cached_byte_size_, target);
+  }
   for (int i = 0; i < this->reader_id_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32ToArray(5, this->reader_id(i), target);
+      WriteUInt32NoTagToArray(this->reader_id(i), target);
   }
   
   // optional uint32 tx_strength = 6;
-  if (_has_bit(5)) {
+  if (has_tx_strength()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->tx_strength(), target);
   }
   
   // optional uint32 area_id = 7;
-  if (_has_bit(6)) {
+  if (has_area_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->area_id(), target);
   }
   
   // optional uint32 room_id = 8;
-  if (_has_bit(7)) {
+  if (has_room_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->room_id(), target);
   }
   
   // optional uint32 building_id = 9;
-  if (_has_bit(8)) {
+  if (has_building_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->building_id(), target);
   }
   
   // optional uint32 installation_id = 10;
-  if (_has_bit(9)) {
+  if (has_installation_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(10, this->installation_id(), target);
   }
   
@@ -733,14 +747,19 @@ int ObTracking::ByteSize() const {
     }
     
   }
-  // repeated uint32 reader_id = 5;
+  // repeated uint32 reader_id = 5 [packed = true];
   {
     int data_size = 0;
     for (int i = 0; i < this->reader_id_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::
         UInt32Size(this->reader_id(i));
     }
-    total_size += 1 * this->reader_id_size() + data_size;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    _reader_id_cached_byte_size_ = data_size;
+    total_size += data_size;
   }
   
   total_size += _extensions_.ByteSize();
@@ -772,33 +791,33 @@ void ObTracking::MergeFrom(const ObTracking& from) {
   GOOGLE_CHECK_NE(&from, this);
   reader_id_.MergeFrom(from.reader_id_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
+    if (from.has_x()) {
       set_x(from.x());
     }
-    if (from._has_bit(1)) {
+    if (from.has_y()) {
       set_y(from.y());
     }
-    if (from._has_bit(2)) {
+    if (from.has_z()) {
       set_z(from.z());
     }
-    if (from._has_bit(3)) {
+    if (from.has_unit()) {
       set_unit(from.unit());
     }
-    if (from._has_bit(5)) {
+    if (from.has_tx_strength()) {
       set_tx_strength(from.tx_strength());
     }
-    if (from._has_bit(6)) {
+    if (from.has_area_id()) {
       set_area_id(from.area_id());
     }
-    if (from._has_bit(7)) {
+    if (from.has_room_id()) {
       set_room_id(from.room_id());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (from._has_bit(8)) {
+    if (from.has_building_id()) {
       set_building_id(from.building_id());
     }
-    if (from._has_bit(9)) {
+    if (from.has_installation_id()) {
       set_installation_id(from.installation_id());
     }
   }
@@ -932,7 +951,7 @@ bool ObProximityTagPower::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &power_)));
-          _set_bit(0);
+          set_has_power();
         } else {
           goto handle_uninterpreted;
         }
@@ -948,7 +967,7 @@ bool ObProximityTagPower::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &count_)));
-          _set_bit(1);
+          set_has_count();
         } else {
           goto handle_uninterpreted;
         }
@@ -980,12 +999,12 @@ bool ObProximityTagPower::MergePartialFromCodedStream(
 void ObProximityTagPower::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional uint32 power = 1;
-  if (_has_bit(0)) {
+  if (has_power()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->power(), output);
   }
   
   // optional uint32 count = 2;
-  if (_has_bit(1)) {
+  if (has_count()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->count(), output);
   }
   
@@ -1002,12 +1021,12 @@ void ObProximityTagPower::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ObProximityTagPower::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional uint32 power = 1;
-  if (_has_bit(0)) {
+  if (has_power()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->power(), target);
   }
   
   // optional uint32 count = 2;
-  if (_has_bit(1)) {
+  if (has_count()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->count(), target);
   }
   
@@ -1069,10 +1088,10 @@ void ObProximityTagPower::MergeFrom(const ::google::protobuf::Message& from) {
 void ObProximityTagPower::MergeFrom(const ObProximityTagPower& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
+    if (from.has_power()) {
       set_power(from.power());
     }
-    if (from._has_bit(1)) {
+    if (from.has_count()) {
       set_count(from.count());
     }
   }
@@ -1197,7 +1216,7 @@ bool ObProximityTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &id_)));
-          _set_bit(0);
+          set_has_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -1244,7 +1263,7 @@ bool ObProximityTag::MergePartialFromCodedStream(
 void ObProximityTag::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required uint32 id = 1;
-  if (_has_bit(0)) {
+  if (has_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
   }
   
@@ -1267,7 +1286,7 @@ void ObProximityTag::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ObProximityTag::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required uint32 id = 1;
-  if (_has_bit(0)) {
+  if (has_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
   }
   
@@ -1338,7 +1357,7 @@ void ObProximityTag::MergeFrom(const ObProximityTag& from) {
   GOOGLE_CHECK_NE(&from, this);
   power_.MergeFrom(from.power_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
+    if (from.has_id()) {
       set_id(from.id());
     }
   }
@@ -1470,7 +1489,7 @@ bool ObProximityLog::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &time_)));
-          _set_bit(0);
+          set_has_time();
         } else {
           goto handle_uninterpreted;
         }
@@ -1486,7 +1505,7 @@ bool ObProximityLog::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &duration_)));
-          _set_bit(1);
+          set_has_duration();
         } else {
           goto handle_uninterpreted;
         }
@@ -1533,12 +1552,12 @@ bool ObProximityLog::MergePartialFromCodedStream(
 void ObProximityLog::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required uint32 time = 1;
-  if (_has_bit(0)) {
+  if (has_time()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->time(), output);
   }
   
   // required uint32 duration = 2;
-  if (_has_bit(1)) {
+  if (has_duration()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->duration(), output);
   }
   
@@ -1561,12 +1580,12 @@ void ObProximityLog::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ObProximityLog::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required uint32 time = 1;
-  if (_has_bit(0)) {
+  if (has_time()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->time(), target);
   }
   
   // required uint32 duration = 2;
-  if (_has_bit(1)) {
+  if (has_duration()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->duration(), target);
   }
   
@@ -1644,10 +1663,10 @@ void ObProximityLog::MergeFrom(const ObProximityLog& from) {
   GOOGLE_CHECK_NE(&from, this);
   tag_.MergeFrom(from.tag_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
+    if (from.has_time()) {
       set_time(from.time());
     }
-    if (from._has_bit(1)) {
+    if (from.has_duration()) {
       set_duration(from.duration());
     }
   }
@@ -1778,7 +1797,7 @@ void ObTag::Clear() {
     tag_strength_ = 0u;
     forwarder_storage_time_ = 0u;
     rx_time_ = GOOGLE_ULONGLONG(0);
-    if (_has_bit(7)) {
+    if (has_tracking()) {
       if (tracking_ != NULL) tracking_->::ObTracking::Clear();
     }
   }
@@ -1801,7 +1820,7 @@ bool ObTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &tag_id_)));
-          _set_bit(0);
+          set_has_tag_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -1817,7 +1836,7 @@ bool ObTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &tag_time_)));
-          _set_bit(1);
+          set_has_tag_time();
         } else {
           goto handle_uninterpreted;
         }
@@ -1833,7 +1852,7 @@ bool ObTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &tag_power_cycles_)));
-          _set_bit(2);
+          set_has_tag_power_cycles();
         } else {
           goto handle_uninterpreted;
         }
@@ -1849,32 +1868,31 @@ bool ObTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &tag_strength_)));
-          _set_bit(3);
+          set_has_tag_strength();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_forwarder_id;
+        if (input->ExpectTag(42)) goto parse_forwarder_id;
         break;
       }
       
-      // repeated uint32 forwarder_id = 5;
+      // repeated uint32 forwarder_id = 5 [packed = true];
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_forwarder_id:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 1, 40, input, this->mutable_forwarder_id())));
-        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
-                   == ::google::protobuf::internal::WireFormatLite::
-                      WIRETYPE_LENGTH_DELIMITED) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, this->mutable_forwarder_id())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 1, 42, input, this->mutable_forwarder_id())));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_forwarder_id;
         if (input->ExpectTag(48)) goto parse_forwarder_storage_time;
         break;
       }
@@ -1887,7 +1905,7 @@ bool ObTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
                  input, &forwarder_storage_time_)));
-          _set_bit(5);
+          set_has_forwarder_storage_time();
         } else {
           goto handle_uninterpreted;
         }
@@ -1903,7 +1921,7 @@ bool ObTag::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &rx_time_)));
-          _set_bit(6);
+          set_has_rx_time();
         } else {
           goto handle_uninterpreted;
         }
@@ -1964,43 +1982,47 @@ bool ObTag::MergePartialFromCodedStream(
 void ObTag::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional uint32 tag_id = 1;
-  if (_has_bit(0)) {
+  if (has_tag_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->tag_id(), output);
   }
   
   // optional uint32 tag_time = 2;
-  if (_has_bit(1)) {
+  if (has_tag_time()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->tag_time(), output);
   }
   
   // optional uint32 tag_power_cycles = 3;
-  if (_has_bit(2)) {
+  if (has_tag_power_cycles()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->tag_power_cycles(), output);
   }
   
   // optional uint32 tag_strength = 4;
-  if (_has_bit(3)) {
+  if (has_tag_strength()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->tag_strength(), output);
   }
   
-  // repeated uint32 forwarder_id = 5;
+  // repeated uint32 forwarder_id = 5 [packed = true];
+  if (this->forwarder_id_size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteTag(5, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
+    output->WriteVarint32(_forwarder_id_cached_byte_size_);
+  }
   for (int i = 0; i < this->forwarder_id_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(
-      5, this->forwarder_id(i), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
+      this->forwarder_id(i), output);
   }
   
   // optional uint32 forwarder_storage_time = 6;
-  if (_has_bit(5)) {
+  if (has_forwarder_storage_time()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->forwarder_storage_time(), output);
   }
   
   // optional uint64 rx_time = 7;
-  if (_has_bit(6)) {
+  if (has_rx_time()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(7, this->rx_time(), output);
   }
   
   // optional .ObTracking tracking = 14;
-  if (_has_bit(7)) {
+  if (has_tracking()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       14, this->tracking(), output);
   }
@@ -2024,43 +2046,51 @@ void ObTag::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ObTag::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional uint32 tag_id = 1;
-  if (_has_bit(0)) {
+  if (has_tag_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->tag_id(), target);
   }
   
   // optional uint32 tag_time = 2;
-  if (_has_bit(1)) {
+  if (has_tag_time()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->tag_time(), target);
   }
   
   // optional uint32 tag_power_cycles = 3;
-  if (_has_bit(2)) {
+  if (has_tag_power_cycles()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->tag_power_cycles(), target);
   }
   
   // optional uint32 tag_strength = 4;
-  if (_has_bit(3)) {
+  if (has_tag_strength()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->tag_strength(), target);
   }
   
-  // repeated uint32 forwarder_id = 5;
+  // repeated uint32 forwarder_id = 5 [packed = true];
+  if (this->forwarder_id_size() > 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
+      5,
+      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
+      target);
+    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
+      _forwarder_id_cached_byte_size_, target);
+  }
   for (int i = 0; i < this->forwarder_id_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32ToArray(5, this->forwarder_id(i), target);
+      WriteUInt32NoTagToArray(this->forwarder_id(i), target);
   }
   
   // optional uint32 forwarder_storage_time = 6;
-  if (_has_bit(5)) {
+  if (has_forwarder_storage_time()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->forwarder_storage_time(), target);
   }
   
   // optional uint64 rx_time = 7;
-  if (_has_bit(6)) {
+  if (has_rx_time()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(7, this->rx_time(), target);
   }
   
   // optional .ObTracking tracking = 14;
-  if (_has_bit(7)) {
+  if (has_tracking()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         14, this->tracking(), target);
@@ -2138,14 +2168,19 @@ int ObTag::ByteSize() const {
     }
     
   }
-  // repeated uint32 forwarder_id = 5;
+  // repeated uint32 forwarder_id = 5 [packed = true];
   {
     int data_size = 0;
     for (int i = 0; i < this->forwarder_id_size(); i++) {
       data_size += ::google::protobuf::internal::WireFormatLite::
         UInt32Size(this->forwarder_id(i));
     }
-    total_size += 1 * this->forwarder_id_size() + data_size;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(data_size);
+    }
+    _forwarder_id_cached_byte_size_ = data_size;
+    total_size += data_size;
   }
   
   // repeated .ObProximityLog proximity = 15;
@@ -2186,25 +2221,25 @@ void ObTag::MergeFrom(const ObTag& from) {
   forwarder_id_.MergeFrom(from.forwarder_id_);
   proximity_.MergeFrom(from.proximity_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
+    if (from.has_tag_id()) {
       set_tag_id(from.tag_id());
     }
-    if (from._has_bit(1)) {
+    if (from.has_tag_time()) {
       set_tag_time(from.tag_time());
     }
-    if (from._has_bit(2)) {
+    if (from.has_tag_power_cycles()) {
       set_tag_power_cycles(from.tag_power_cycles());
     }
-    if (from._has_bit(3)) {
+    if (from.has_tag_strength()) {
       set_tag_strength(from.tag_strength());
     }
-    if (from._has_bit(5)) {
+    if (from.has_forwarder_storage_time()) {
       set_forwarder_storage_time(from.forwarder_storage_time());
     }
-    if (from._has_bit(6)) {
+    if (from.has_rx_time()) {
       set_rx_time(from.rx_time());
     }
-    if (from._has_bit(7)) {
+    if (from.has_tracking()) {
       mutable_tracking()->::ObTracking::MergeFrom(from.tracking());
     }
   }

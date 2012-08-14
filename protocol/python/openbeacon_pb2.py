@@ -7,10 +7,11 @@ from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 
+
 DESCRIPTOR = descriptor.FileDescriptor(
   name='openbeacon.proto',
   package='',
-  serialized_pb='\n\x10openbeacon.proto\"\xc3\x01\n\nObTracking\x12\t\n\x01x\x18\x01 \x01(\x11\x12\t\n\x01y\x18\x02 \x01(\x11\x12\t\n\x01z\x18\x03 \x01(\x11\x12\x15\n\x04unit\x18\x04 \x01(\x0e\x32\x07.ObUnit\x12\x11\n\treader_id\x18\x05 \x03(\r\x12\x13\n\x0btx_strength\x18\x06 \x01(\r\x12\x0f\n\x07\x61rea_id\x18\x07 \x01(\r\x12\x0f\n\x07room_id\x18\x08 \x01(\r\x12\x13\n\x0b\x62uilding_id\x18\t \x01(\r\x12\x17\n\x0finstallation_id\x18\n \x01(\r*\x05\x08\x64\x10\x80\x01\":\n\x13ObProximityTagPower\x12\r\n\x05power\x18\x01 \x01(\r\x12\r\n\x05\x63ount\x18\x02 \x01(\r*\x05\x08\x64\x10\x80\x01\"H\n\x0eObProximityTag\x12\n\n\x02id\x18\x01 \x02(\r\x12#\n\x05power\x18\x02 \x03(\x0b\x32\x14.ObProximityTagPower*\x05\x08\x64\x10\x80\x01\"U\n\x0eObProximityLog\x12\x0c\n\x04time\x18\x01 \x02(\r\x12\x10\n\x08\x64uration\x18\x02 \x02(\r\x12\x1c\n\x03tag\x18\x03 \x03(\x0b\x32\x0f.ObProximityTag*\x05\x08\x64\x10\x80\x01\"\xea\x01\n\x05ObTag\x12\x0e\n\x06tag_id\x18\x01 \x01(\r\x12\x10\n\x08tag_time\x18\x02 \x01(\r\x12\x18\n\x10tag_power_cycles\x18\x03 \x01(\r\x12\x14\n\x0ctag_strength\x18\x04 \x01(\r\x12\x14\n\x0c\x66orwarder_id\x18\x05 \x03(\r\x12\x1e\n\x16\x66orwarder_storage_time\x18\x06 \x01(\r\x12\x0f\n\x07rx_time\x18\x07 \x01(\x04\x12\x1d\n\x08tracking\x18\x0e \x01(\x0b\x32\x0b.ObTracking\x12\"\n\tproximity\x18\x0f \x03(\x0b\x32\x0f.ObProximityLog*\x05\x08\x64\x10\x80\x01*\xa6\x01\n\x06ObUnit\x12\x10\n\x0cOB_UNIT_NONE\x10\x00\x12\x11\n\rOB_UNIT_PIXEL\x10\x01\x12\x16\n\x12OB_UNIT_MILLIMETER\x10\x02\x12\x16\n\x12OB_UNIT_CENTIMETER\x10\x03\x12\x11\n\rOB_UNIT_METER\x10\x04\x12\x10\n\x0cOB_UNIT_INCH\x10\x05\x12\x10\n\x0cOB_UNIT_FEET\x10\x06\x12\x10\n\x0cOB_UNIT_YARD\x10\x07')
+  serialized_pb='\n\x10openbeacon.proto\"\xc7\x01\n\nObTracking\x12\t\n\x01x\x18\x01 \x01(\x11\x12\t\n\x01y\x18\x02 \x01(\x11\x12\t\n\x01z\x18\x03 \x01(\x11\x12\x15\n\x04unit\x18\x04 \x01(\x0e\x32\x07.ObUnit\x12\x15\n\treader_id\x18\x05 \x03(\rB\x02\x10\x01\x12\x13\n\x0btx_strength\x18\x06 \x01(\r\x12\x0f\n\x07\x61rea_id\x18\x07 \x01(\r\x12\x0f\n\x07room_id\x18\x08 \x01(\r\x12\x13\n\x0b\x62uilding_id\x18\t \x01(\r\x12\x17\n\x0finstallation_id\x18\n \x01(\r*\x05\x08\x64\x10\x80\x01\":\n\x13ObProximityTagPower\x12\r\n\x05power\x18\x01 \x01(\r\x12\r\n\x05\x63ount\x18\x02 \x01(\r*\x05\x08\x64\x10\x80\x01\"H\n\x0eObProximityTag\x12\n\n\x02id\x18\x01 \x02(\r\x12#\n\x05power\x18\x02 \x03(\x0b\x32\x14.ObProximityTagPower*\x05\x08\x64\x10\x80\x01\"U\n\x0eObProximityLog\x12\x0c\n\x04time\x18\x01 \x02(\r\x12\x10\n\x08\x64uration\x18\x02 \x02(\r\x12\x1c\n\x03tag\x18\x03 \x03(\x0b\x32\x0f.ObProximityTag*\x05\x08\x64\x10\x80\x01\"\xee\x01\n\x05ObTag\x12\x0e\n\x06tag_id\x18\x01 \x01(\r\x12\x10\n\x08tag_time\x18\x02 \x01(\r\x12\x18\n\x10tag_power_cycles\x18\x03 \x01(\r\x12\x14\n\x0ctag_strength\x18\x04 \x01(\r\x12\x18\n\x0c\x66orwarder_id\x18\x05 \x03(\rB\x02\x10\x01\x12\x1e\n\x16\x66orwarder_storage_time\x18\x06 \x01(\r\x12\x0f\n\x07rx_time\x18\x07 \x01(\x04\x12\x1d\n\x08tracking\x18\x0e \x01(\x0b\x32\x0b.ObTracking\x12\"\n\tproximity\x18\x0f \x03(\x0b\x32\x0f.ObProximityLog*\x05\x08\x64\x10\x80\x01*\xa6\x01\n\x06ObUnit\x12\x10\n\x0cOB_UNIT_NONE\x10\x00\x12\x11\n\rOB_UNIT_PIXEL\x10\x01\x12\x16\n\x12OB_UNIT_MILLIMETER\x10\x02\x12\x16\n\x12OB_UNIT_CENTIMETER\x10\x03\x12\x11\n\rOB_UNIT_METER\x10\x04\x12\x10\n\x0cOB_UNIT_INCH\x10\x05\x12\x10\n\x0cOB_UNIT_FEET\x10\x06\x12\x10\n\x0cOB_UNIT_YARD\x10\x07')
 
 _OBUNIT = descriptor.EnumDescriptor(
   name='ObUnit',
@@ -53,8 +54,8 @@ _OBUNIT = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=677,
-  serialized_end=843,
+  serialized_start=685,
+  serialized_end=851,
 )
 
 
@@ -110,7 +111,7 @@ _OBTRACKING = descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=descriptor._ParseOptions(descriptor_pb2.FieldOptions(), '\020\001')),
     descriptor.FieldDescriptor(
       name='tx_strength', full_name='ObTracking.tx_strength', index=5,
       number=6, type=13, cpp_type=3, label=1,
@@ -156,7 +157,7 @@ _OBTRACKING = descriptor.Descriptor(
   is_extendable=True,
   extension_ranges=[(100, 128), ],
   serialized_start=21,
-  serialized_end=216,
+  serialized_end=220,
 )
 
 
@@ -190,8 +191,8 @@ _OBPROXIMITYTAGPOWER = descriptor.Descriptor(
   options=None,
   is_extendable=True,
   extension_ranges=[(100, 128), ],
-  serialized_start=218,
-  serialized_end=276,
+  serialized_start=222,
+  serialized_end=280,
 )
 
 
@@ -225,8 +226,8 @@ _OBPROXIMITYTAG = descriptor.Descriptor(
   options=None,
   is_extendable=True,
   extension_ranges=[(100, 128), ],
-  serialized_start=278,
-  serialized_end=350,
+  serialized_start=282,
+  serialized_end=354,
 )
 
 
@@ -267,8 +268,8 @@ _OBPROXIMITYLOG = descriptor.Descriptor(
   options=None,
   is_extendable=True,
   extension_ranges=[(100, 128), ],
-  serialized_start=352,
-  serialized_end=437,
+  serialized_start=356,
+  serialized_end=441,
 )
 
 
@@ -313,7 +314,7 @@ _OBTAG = descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=descriptor._ParseOptions(descriptor_pb2.FieldOptions(), '\020\001')),
     descriptor.FieldDescriptor(
       name='forwarder_storage_time', full_name='ObTag.forwarder_storage_time', index=5,
       number=6, type=13, cpp_type=3, label=1,
@@ -351,16 +352,20 @@ _OBTAG = descriptor.Descriptor(
   options=None,
   is_extendable=True,
   extension_ranges=[(100, 128), ],
-  serialized_start=440,
-  serialized_end=674,
+  serialized_start=444,
+  serialized_end=682,
 )
-
 
 _OBTRACKING.fields_by_name['unit'].enum_type = _OBUNIT
 _OBPROXIMITYTAG.fields_by_name['power'].message_type = _OBPROXIMITYTAGPOWER
 _OBPROXIMITYLOG.fields_by_name['tag'].message_type = _OBPROXIMITYTAG
 _OBTAG.fields_by_name['tracking'].message_type = _OBTRACKING
 _OBTAG.fields_by_name['proximity'].message_type = _OBPROXIMITYLOG
+DESCRIPTOR.message_types_by_name['ObTracking'] = _OBTRACKING
+DESCRIPTOR.message_types_by_name['ObProximityTagPower'] = _OBPROXIMITYTAGPOWER
+DESCRIPTOR.message_types_by_name['ObProximityTag'] = _OBPROXIMITYTAG
+DESCRIPTOR.message_types_by_name['ObProximityLog'] = _OBPROXIMITYLOG
+DESCRIPTOR.message_types_by_name['ObTag'] = _OBTAG
 
 class ObTracking(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType

@@ -18,6 +18,15 @@ public final class Openbeacon {
     OB_UNIT_YARD(7, 7),
     ;
     
+    public static final int OB_UNIT_NONE_VALUE = 0;
+    public static final int OB_UNIT_PIXEL_VALUE = 1;
+    public static final int OB_UNIT_MILLIMETER_VALUE = 2;
+    public static final int OB_UNIT_CENTIMETER_VALUE = 3;
+    public static final int OB_UNIT_METER_VALUE = 4;
+    public static final int OB_UNIT_INCH_VALUE = 5;
+    public static final int OB_UNIT_FEET_VALUE = 6;
+    public static final int OB_UNIT_YARD_VALUE = 7;
+    
     
     public final int getNumber() { return value; }
     
@@ -43,8 +52,8 @@ public final class Openbeacon {
         internalValueMap =
           new com.google.protobuf.Internal.EnumLiteMap<ObUnit>() {
             public ObUnit findValueByNumber(int number) {
-              return ObUnit.valueOf(number)
-    ;        }
+              return ObUnit.valueOf(number);
+            }
           };
     
     public final com.google.protobuf.Descriptors.EnumValueDescriptor
@@ -63,6 +72,7 @@ public final class Openbeacon {
     private static final ObUnit[] VALUES = {
       OB_UNIT_NONE, OB_UNIT_PIXEL, OB_UNIT_MILLIMETER, OB_UNIT_CENTIMETER, OB_UNIT_METER, OB_UNIT_INCH, OB_UNIT_FEET, OB_UNIT_YARD, 
     };
+    
     public static ObUnit valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -71,26 +81,69 @@ public final class Openbeacon {
       }
       return VALUES[desc.getIndex()];
     }
+    
     private final int index;
     private final int value;
+    
     private ObUnit(int index, int value) {
       this.index = index;
       this.value = value;
     }
     
-    static {
-      Openbeacon.getDescriptor();
-    }
-    
     // @@protoc_insertion_point(enum_scope:ObUnit)
   }
   
+  public interface ObTrackingOrBuilder extends
+      com.google.protobuf.GeneratedMessage.
+          ExtendableMessageOrBuilder<ObTracking> {
+    
+    // optional sint32 x = 1;
+    boolean hasX();
+    int getX();
+    
+    // optional sint32 y = 2;
+    boolean hasY();
+    int getY();
+    
+    // optional sint32 z = 3;
+    boolean hasZ();
+    int getZ();
+    
+    // optional .ObUnit unit = 4;
+    boolean hasUnit();
+    Openbeacon.ObUnit getUnit();
+    
+    // repeated uint32 reader_id = 5 [packed = true];
+    java.util.List<java.lang.Integer> getReaderIdList();
+    int getReaderIdCount();
+    int getReaderId(int index);
+    
+    // optional uint32 tx_strength = 6;
+    boolean hasTxStrength();
+    int getTxStrength();
+    
+    // optional uint32 area_id = 7;
+    boolean hasAreaId();
+    int getAreaId();
+    
+    // optional uint32 room_id = 8;
+    boolean hasRoomId();
+    int getRoomId();
+    
+    // optional uint32 building_id = 9;
+    boolean hasBuildingId();
+    int getBuildingId();
+    
+    // optional uint32 installation_id = 10;
+    boolean hasInstallationId();
+    int getInstallationId();
+  }
   public static final class ObTracking extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        ObTracking> {
+        ObTracking> implements ObTrackingOrBuilder {
     // Use ObTracking.newBuilder() to construct.
-    private ObTracking() {
-      initFields();
+    private ObTracking(Builder builder) {
+      super(builder);
     }
     private ObTracking(boolean noInit) {}
     
@@ -113,123 +166,176 @@ public final class Openbeacon {
       return Openbeacon.internal_static_ObTracking_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // optional sint32 x = 1;
     public static final int X_FIELD_NUMBER = 1;
-    private boolean hasX;
-    private int x_ = 0;
-    public boolean hasX() { return hasX; }
-    public int getX() { return x_; }
+    private int x_;
+    public boolean hasX() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getX() {
+      return x_;
+    }
     
     // optional sint32 y = 2;
     public static final int Y_FIELD_NUMBER = 2;
-    private boolean hasY;
-    private int y_ = 0;
-    public boolean hasY() { return hasY; }
-    public int getY() { return y_; }
+    private int y_;
+    public boolean hasY() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getY() {
+      return y_;
+    }
     
     // optional sint32 z = 3;
     public static final int Z_FIELD_NUMBER = 3;
-    private boolean hasZ;
-    private int z_ = 0;
-    public boolean hasZ() { return hasZ; }
-    public int getZ() { return z_; }
+    private int z_;
+    public boolean hasZ() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getZ() {
+      return z_;
+    }
     
     // optional .ObUnit unit = 4;
     public static final int UNIT_FIELD_NUMBER = 4;
-    private boolean hasUnit;
     private Openbeacon.ObUnit unit_;
-    public boolean hasUnit() { return hasUnit; }
-    public Openbeacon.ObUnit getUnit() { return unit_; }
+    public boolean hasUnit() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public Openbeacon.ObUnit getUnit() {
+      return unit_;
+    }
     
-    // repeated uint32 reader_id = 5;
+    // repeated uint32 reader_id = 5 [packed = true];
     public static final int READER_ID_FIELD_NUMBER = 5;
-    private java.util.List<java.lang.Integer> readerId_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getReaderIdList() {
+    private java.util.List<java.lang.Integer> readerId_;
+    public java.util.List<java.lang.Integer>
+        getReaderIdList() {
       return readerId_;
     }
-    public int getReaderIdCount() { return readerId_.size(); }
+    public int getReaderIdCount() {
+      return readerId_.size();
+    }
     public int getReaderId(int index) {
       return readerId_.get(index);
     }
+    private int readerIdMemoizedSerializedSize = -1;
     
     // optional uint32 tx_strength = 6;
     public static final int TX_STRENGTH_FIELD_NUMBER = 6;
-    private boolean hasTxStrength;
-    private int txStrength_ = 0;
-    public boolean hasTxStrength() { return hasTxStrength; }
-    public int getTxStrength() { return txStrength_; }
+    private int txStrength_;
+    public boolean hasTxStrength() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public int getTxStrength() {
+      return txStrength_;
+    }
     
     // optional uint32 area_id = 7;
     public static final int AREA_ID_FIELD_NUMBER = 7;
-    private boolean hasAreaId;
-    private int areaId_ = 0;
-    public boolean hasAreaId() { return hasAreaId; }
-    public int getAreaId() { return areaId_; }
+    private int areaId_;
+    public boolean hasAreaId() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public int getAreaId() {
+      return areaId_;
+    }
     
     // optional uint32 room_id = 8;
     public static final int ROOM_ID_FIELD_NUMBER = 8;
-    private boolean hasRoomId;
-    private int roomId_ = 0;
-    public boolean hasRoomId() { return hasRoomId; }
-    public int getRoomId() { return roomId_; }
+    private int roomId_;
+    public boolean hasRoomId() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    public int getRoomId() {
+      return roomId_;
+    }
     
     // optional uint32 building_id = 9;
     public static final int BUILDING_ID_FIELD_NUMBER = 9;
-    private boolean hasBuildingId;
-    private int buildingId_ = 0;
-    public boolean hasBuildingId() { return hasBuildingId; }
-    public int getBuildingId() { return buildingId_; }
+    private int buildingId_;
+    public boolean hasBuildingId() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public int getBuildingId() {
+      return buildingId_;
+    }
     
     // optional uint32 installation_id = 10;
     public static final int INSTALLATION_ID_FIELD_NUMBER = 10;
-    private boolean hasInstallationId;
-    private int installationId_ = 0;
-    public boolean hasInstallationId() { return hasInstallationId; }
-    public int getInstallationId() { return installationId_; }
+    private int installationId_;
+    public boolean hasInstallationId() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    public int getInstallationId() {
+      return installationId_;
+    }
     
     private void initFields() {
+      x_ = 0;
+      y_ = 0;
+      z_ = 0;
       unit_ = Openbeacon.ObUnit.OB_UNIT_NONE;
+      readerId_ = java.util.Collections.emptyList();;
+      txStrength_ = 0;
+      areaId_ = 0;
+      roomId_ = 0;
+      buildingId_ = 0;
+      installationId_ = 0;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!extensionsAreInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!extensionsAreInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      com.google.protobuf.GeneratedMessage.ExtendableMessage
-        .ExtensionWriter extensionWriter = newExtensionWriter();
-      if (hasX()) {
-        output.writeSInt32(1, getX());
+      com.google.protobuf.GeneratedMessage
+        .ExtendableMessage<Openbeacon.ObTracking>.ExtensionWriter extensionWriter =
+          newExtensionWriter();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeSInt32(1, x_);
       }
-      if (hasY()) {
-        output.writeSInt32(2, getY());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeSInt32(2, y_);
       }
-      if (hasZ()) {
-        output.writeSInt32(3, getZ());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeSInt32(3, z_);
       }
-      if (hasUnit()) {
-        output.writeEnum(4, getUnit().getNumber());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeEnum(4, unit_.getNumber());
       }
-      for (int element : getReaderIdList()) {
-        output.writeUInt32(5, element);
+      if (getReaderIdList().size() > 0) {
+        output.writeRawVarint32(42);
+        output.writeRawVarint32(readerIdMemoizedSerializedSize);
       }
-      if (hasTxStrength()) {
-        output.writeUInt32(6, getTxStrength());
+      for (int i = 0; i < readerId_.size(); i++) {
+        output.writeUInt32NoTag(readerId_.get(i));
       }
-      if (hasAreaId()) {
-        output.writeUInt32(7, getAreaId());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(6, txStrength_);
       }
-      if (hasRoomId()) {
-        output.writeUInt32(8, getRoomId());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt32(7, areaId_);
       }
-      if (hasBuildingId()) {
-        output.writeUInt32(9, getBuildingId());
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeUInt32(8, roomId_);
       }
-      if (hasInstallationId()) {
-        output.writeUInt32(10, getInstallationId());
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeUInt32(9, buildingId_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt32(10, installationId_);
       }
       extensionWriter.writeUntil(128, output);
       getUnknownFields().writeTo(output);
@@ -241,55 +347,67 @@ public final class Openbeacon {
       if (size != -1) return size;
     
       size = 0;
-      if (hasX()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(1, getX());
+          .computeSInt32Size(1, x_);
       }
-      if (hasY()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(2, getY());
+          .computeSInt32Size(2, y_);
       }
-      if (hasZ()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeSInt32Size(3, getZ());
+          .computeSInt32Size(3, z_);
       }
-      if (hasUnit()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, getUnit().getNumber());
+          .computeEnumSize(4, unit_.getNumber());
       }
       {
         int dataSize = 0;
-        for (int element : getReaderIdList()) {
+        for (int i = 0; i < readerId_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt32SizeNoTag(element);
+            .computeUInt32SizeNoTag(readerId_.get(i));
         }
         size += dataSize;
-        size += 1 * getReaderIdList().size();
+        if (!getReaderIdList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        readerIdMemoizedSerializedSize = dataSize;
       }
-      if (hasTxStrength()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, getTxStrength());
+          .computeUInt32Size(6, txStrength_);
       }
-      if (hasAreaId()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, getAreaId());
+          .computeUInt32Size(7, areaId_);
       }
-      if (hasRoomId()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(8, getRoomId());
+          .computeUInt32Size(8, roomId_);
       }
-      if (hasBuildingId()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(9, getBuildingId());
+          .computeUInt32Size(9, buildingId_);
       }
-      if (hasInstallationId()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(10, getInstallationId());
+          .computeUInt32Size(10, installationId_);
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static Openbeacon.ObTracking parseFrom(
@@ -366,35 +484,69 @@ public final class Openbeacon {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          Openbeacon.ObTracking, Builder> {
-      private Openbeacon.ObTracking result;
-      
-      // Construct using Openbeacon.ObTracking.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new Openbeacon.ObTracking();
-        return builder;
+          Openbeacon.ObTracking, Builder> implements Openbeacon.ObTrackingOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Openbeacon.internal_static_ObTracking_descriptor;
       }
       
-      protected Openbeacon.ObTracking internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Openbeacon.internal_static_ObTracking_fieldAccessorTable;
+      }
+      
+      // Construct using Openbeacon.ObTracking.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new Openbeacon.ObTracking();
+        super.clear();
+        x_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        y_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        z_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        unit_ = Openbeacon.ObUnit.OB_UNIT_NONE;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        readerId_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        txStrength_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        areaId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        roomId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        buildingId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        installationId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -406,37 +558,72 @@ public final class Openbeacon {
         return Openbeacon.ObTracking.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public Openbeacon.ObTracking build() {
-        if (result != null && !isInitialized()) {
+        Openbeacon.ObTracking result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private Openbeacon.ObTracking buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        Openbeacon.ObTracking result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public Openbeacon.ObTracking buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        Openbeacon.ObTracking result = new Openbeacon.ObTracking(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.readerId_ != java.util.Collections.EMPTY_LIST) {
-          result.readerId_ =
-            java.util.Collections.unmodifiableList(result.readerId_);
+        result.x_ = x_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-        Openbeacon.ObTracking returnMe = result;
-        result = null;
-        return returnMe;
+        result.y_ = y_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.z_ = z_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.unit_ = unit_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          readerId_ = java.util.Collections.unmodifiableList(readerId_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.readerId_ = readerId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.txStrength_ = txStrength_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.areaId_ = areaId_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.roomId_ = roomId_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.buildingId_ = buildingId_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.installationId_ = installationId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -463,10 +650,14 @@ public final class Openbeacon {
           setUnit(other.getUnit());
         }
         if (!other.readerId_.isEmpty()) {
-          if (result.readerId_.isEmpty()) {
-            result.readerId_ = new java.util.ArrayList<java.lang.Integer>();
+          if (readerId_.isEmpty()) {
+            readerId_ = other.readerId_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureReaderIdIsMutable();
+            readerId_.addAll(other.readerId_);
           }
-          result.readerId_.addAll(other.readerId_);
+          onChanged();
         }
         if (other.hasTxStrength()) {
           setTxStrength(other.getTxStrength());
@@ -488,6 +679,14 @@ public final class Openbeacon {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!extensionsAreInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -500,25 +699,30 @@ public final class Openbeacon {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setX(input.readSInt32());
+              bitField0_ |= 0x00000001;
+              x_ = input.readSInt32();
               break;
             }
             case 16: {
-              setY(input.readSInt32());
+              bitField0_ |= 0x00000002;
+              y_ = input.readSInt32();
               break;
             }
             case 24: {
-              setZ(input.readSInt32());
+              bitField0_ |= 0x00000004;
+              z_ = input.readSInt32();
               break;
             }
             case 32: {
@@ -527,12 +731,14 @@ public final class Openbeacon {
               if (value == null) {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
-                setUnit(value);
+                bitField0_ |= 0x00000008;
+                unit_ = value;
               }
               break;
             }
             case 40: {
-              addReaderId(input.readUInt32());
+              ensureReaderIdIsMutable();
+              readerId_.add(input.readUInt32());
               break;
             }
             case 42: {
@@ -545,226 +751,270 @@ public final class Openbeacon {
               break;
             }
             case 48: {
-              setTxStrength(input.readUInt32());
+              bitField0_ |= 0x00000020;
+              txStrength_ = input.readUInt32();
               break;
             }
             case 56: {
-              setAreaId(input.readUInt32());
+              bitField0_ |= 0x00000040;
+              areaId_ = input.readUInt32();
               break;
             }
             case 64: {
-              setRoomId(input.readUInt32());
+              bitField0_ |= 0x00000080;
+              roomId_ = input.readUInt32();
               break;
             }
             case 72: {
-              setBuildingId(input.readUInt32());
+              bitField0_ |= 0x00000100;
+              buildingId_ = input.readUInt32();
               break;
             }
             case 80: {
-              setInstallationId(input.readUInt32());
+              bitField0_ |= 0x00000200;
+              installationId_ = input.readUInt32();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // optional sint32 x = 1;
+      private int x_ ;
       public boolean hasX() {
-        return result.hasX();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getX() {
-        return result.getX();
+        return x_;
       }
       public Builder setX(int value) {
-        result.hasX = true;
-        result.x_ = value;
+        bitField0_ |= 0x00000001;
+        x_ = value;
+        onChanged();
         return this;
       }
       public Builder clearX() {
-        result.hasX = false;
-        result.x_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        x_ = 0;
+        onChanged();
         return this;
       }
       
       // optional sint32 y = 2;
+      private int y_ ;
       public boolean hasY() {
-        return result.hasY();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getY() {
-        return result.getY();
+        return y_;
       }
       public Builder setY(int value) {
-        result.hasY = true;
-        result.y_ = value;
+        bitField0_ |= 0x00000002;
+        y_ = value;
+        onChanged();
         return this;
       }
       public Builder clearY() {
-        result.hasY = false;
-        result.y_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        y_ = 0;
+        onChanged();
         return this;
       }
       
       // optional sint32 z = 3;
+      private int z_ ;
       public boolean hasZ() {
-        return result.hasZ();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public int getZ() {
-        return result.getZ();
+        return z_;
       }
       public Builder setZ(int value) {
-        result.hasZ = true;
-        result.z_ = value;
+        bitField0_ |= 0x00000004;
+        z_ = value;
+        onChanged();
         return this;
       }
       public Builder clearZ() {
-        result.hasZ = false;
-        result.z_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        z_ = 0;
+        onChanged();
         return this;
       }
       
       // optional .ObUnit unit = 4;
+      private Openbeacon.ObUnit unit_ = Openbeacon.ObUnit.OB_UNIT_NONE;
       public boolean hasUnit() {
-        return result.hasUnit();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public Openbeacon.ObUnit getUnit() {
-        return result.getUnit();
+        return unit_;
       }
       public Builder setUnit(Openbeacon.ObUnit value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        result.hasUnit = true;
-        result.unit_ = value;
+        bitField0_ |= 0x00000008;
+        unit_ = value;
+        onChanged();
         return this;
       }
       public Builder clearUnit() {
-        result.hasUnit = false;
-        result.unit_ = Openbeacon.ObUnit.OB_UNIT_NONE;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        unit_ = Openbeacon.ObUnit.OB_UNIT_NONE;
+        onChanged();
         return this;
       }
       
-      // repeated uint32 reader_id = 5;
-      public java.util.List<java.lang.Integer> getReaderIdList() {
-        return java.util.Collections.unmodifiableList(result.readerId_);
+      // repeated uint32 reader_id = 5 [packed = true];
+      private java.util.List<java.lang.Integer> readerId_ = java.util.Collections.emptyList();;
+      private void ensureReaderIdIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          readerId_ = new java.util.ArrayList<java.lang.Integer>(readerId_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getReaderIdList() {
+        return java.util.Collections.unmodifiableList(readerId_);
       }
       public int getReaderIdCount() {
-        return result.getReaderIdCount();
+        return readerId_.size();
       }
       public int getReaderId(int index) {
-        return result.getReaderId(index);
+        return readerId_.get(index);
       }
-      public Builder setReaderId(int index, int value) {
-        result.readerId_.set(index, value);
+      public Builder setReaderId(
+          int index, int value) {
+        ensureReaderIdIsMutable();
+        readerId_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addReaderId(int value) {
-        if (result.readerId_.isEmpty()) {
-          result.readerId_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.readerId_.add(value);
+        ensureReaderIdIsMutable();
+        readerId_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllReaderId(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.readerId_.isEmpty()) {
-          result.readerId_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.readerId_);
+        ensureReaderIdIsMutable();
+        super.addAll(values, readerId_);
+        onChanged();
         return this;
       }
       public Builder clearReaderId() {
-        result.readerId_ = java.util.Collections.emptyList();
+        readerId_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
         return this;
       }
       
       // optional uint32 tx_strength = 6;
+      private int txStrength_ ;
       public boolean hasTxStrength() {
-        return result.hasTxStrength();
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       public int getTxStrength() {
-        return result.getTxStrength();
+        return txStrength_;
       }
       public Builder setTxStrength(int value) {
-        result.hasTxStrength = true;
-        result.txStrength_ = value;
+        bitField0_ |= 0x00000020;
+        txStrength_ = value;
+        onChanged();
         return this;
       }
       public Builder clearTxStrength() {
-        result.hasTxStrength = false;
-        result.txStrength_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        txStrength_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 area_id = 7;
+      private int areaId_ ;
       public boolean hasAreaId() {
-        return result.hasAreaId();
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       public int getAreaId() {
-        return result.getAreaId();
+        return areaId_;
       }
       public Builder setAreaId(int value) {
-        result.hasAreaId = true;
-        result.areaId_ = value;
+        bitField0_ |= 0x00000040;
+        areaId_ = value;
+        onChanged();
         return this;
       }
       public Builder clearAreaId() {
-        result.hasAreaId = false;
-        result.areaId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        areaId_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 room_id = 8;
+      private int roomId_ ;
       public boolean hasRoomId() {
-        return result.hasRoomId();
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       public int getRoomId() {
-        return result.getRoomId();
+        return roomId_;
       }
       public Builder setRoomId(int value) {
-        result.hasRoomId = true;
-        result.roomId_ = value;
+        bitField0_ |= 0x00000080;
+        roomId_ = value;
+        onChanged();
         return this;
       }
       public Builder clearRoomId() {
-        result.hasRoomId = false;
-        result.roomId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        roomId_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 building_id = 9;
+      private int buildingId_ ;
       public boolean hasBuildingId() {
-        return result.hasBuildingId();
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       public int getBuildingId() {
-        return result.getBuildingId();
+        return buildingId_;
       }
       public Builder setBuildingId(int value) {
-        result.hasBuildingId = true;
-        result.buildingId_ = value;
+        bitField0_ |= 0x00000100;
+        buildingId_ = value;
+        onChanged();
         return this;
       }
       public Builder clearBuildingId() {
-        result.hasBuildingId = false;
-        result.buildingId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        buildingId_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 installation_id = 10;
+      private int installationId_ ;
       public boolean hasInstallationId() {
-        return result.hasInstallationId();
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       public int getInstallationId() {
-        return result.getInstallationId();
+        return installationId_;
       }
       public Builder setInstallationId(int value) {
-        result.hasInstallationId = true;
-        result.installationId_ = value;
+        bitField0_ |= 0x00000200;
+        installationId_ = value;
+        onChanged();
         return this;
       }
       public Builder clearInstallationId() {
-        result.hasInstallationId = false;
-        result.installationId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        installationId_ = 0;
+        onChanged();
         return this;
       }
       
@@ -773,19 +1023,30 @@ public final class Openbeacon {
     
     static {
       defaultInstance = new ObTracking(true);
-      Openbeacon.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:ObTracking)
   }
   
+  public interface ObProximityTagPowerOrBuilder extends
+      com.google.protobuf.GeneratedMessage.
+          ExtendableMessageOrBuilder<ObProximityTagPower> {
+    
+    // optional uint32 power = 1;
+    boolean hasPower();
+    int getPower();
+    
+    // optional uint32 count = 2;
+    boolean hasCount();
+    int getCount();
+  }
   public static final class ObProximityTagPower extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        ObProximityTagPower> {
+        ObProximityTagPower> implements ObProximityTagPowerOrBuilder {
     // Use ObProximityTagPower.newBuilder() to construct.
-    private ObProximityTagPower() {
-      initFields();
+    private ObProximityTagPower(Builder builder) {
+      super(builder);
     }
     private ObProximityTagPower(boolean noInit) {}
     
@@ -808,37 +1069,55 @@ public final class Openbeacon {
       return Openbeacon.internal_static_ObProximityTagPower_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // optional uint32 power = 1;
     public static final int POWER_FIELD_NUMBER = 1;
-    private boolean hasPower;
-    private int power_ = 0;
-    public boolean hasPower() { return hasPower; }
-    public int getPower() { return power_; }
+    private int power_;
+    public boolean hasPower() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getPower() {
+      return power_;
+    }
     
     // optional uint32 count = 2;
     public static final int COUNT_FIELD_NUMBER = 2;
-    private boolean hasCount;
-    private int count_ = 0;
-    public boolean hasCount() { return hasCount; }
-    public int getCount() { return count_; }
+    private int count_;
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getCount() {
+      return count_;
+    }
     
     private void initFields() {
+      power_ = 0;
+      count_ = 0;
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!extensionsAreInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!extensionsAreInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      com.google.protobuf.GeneratedMessage.ExtendableMessage
-        .ExtensionWriter extensionWriter = newExtensionWriter();
-      if (hasPower()) {
-        output.writeUInt32(1, getPower());
+      com.google.protobuf.GeneratedMessage
+        .ExtendableMessage<Openbeacon.ObProximityTagPower>.ExtensionWriter extensionWriter =
+          newExtensionWriter();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, power_);
       }
-      if (hasCount()) {
-        output.writeUInt32(2, getCount());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, count_);
       }
       extensionWriter.writeUntil(128, output);
       getUnknownFields().writeTo(output);
@@ -850,18 +1129,25 @@ public final class Openbeacon {
       if (size != -1) return size;
     
       size = 0;
-      if (hasPower()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, getPower());
+          .computeUInt32Size(1, power_);
       }
-      if (hasCount()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, getCount());
+          .computeUInt32Size(2, count_);
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static Openbeacon.ObProximityTagPower parseFrom(
@@ -938,35 +1224,53 @@ public final class Openbeacon {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          Openbeacon.ObProximityTagPower, Builder> {
-      private Openbeacon.ObProximityTagPower result;
-      
-      // Construct using Openbeacon.ObProximityTagPower.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new Openbeacon.ObProximityTagPower();
-        return builder;
+          Openbeacon.ObProximityTagPower, Builder> implements Openbeacon.ObProximityTagPowerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Openbeacon.internal_static_ObProximityTagPower_descriptor;
       }
       
-      protected Openbeacon.ObProximityTagPower internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Openbeacon.internal_static_ObProximityTagPower_fieldAccessorTable;
+      }
+      
+      // Construct using Openbeacon.ObProximityTagPower.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
-        }
-        result = new Openbeacon.ObProximityTagPower();
+        super.clear();
+        power_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -978,33 +1282,39 @@ public final class Openbeacon {
         return Openbeacon.ObProximityTagPower.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public Openbeacon.ObProximityTagPower build() {
-        if (result != null && !isInitialized()) {
+        Openbeacon.ObProximityTagPower result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private Openbeacon.ObProximityTagPower buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        Openbeacon.ObProximityTagPower result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public Openbeacon.ObProximityTagPower buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        Openbeacon.ObProximityTagPower result = new Openbeacon.ObProximityTagPower(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        Openbeacon.ObProximityTagPower returnMe = result;
-        result = null;
-        return returnMe;
+        result.power_ = power_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1029,6 +1339,14 @@ public final class Openbeacon {
         return this;
       }
       
+      public final boolean isInitialized() {
+        if (!extensionsAreInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
       public Builder mergeFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1041,61 +1359,72 @@ public final class Openbeacon {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setPower(input.readUInt32());
+              bitField0_ |= 0x00000001;
+              power_ = input.readUInt32();
               break;
             }
             case 16: {
-              setCount(input.readUInt32());
+              bitField0_ |= 0x00000002;
+              count_ = input.readUInt32();
               break;
             }
           }
         }
       }
       
+      private int bitField0_;
       
       // optional uint32 power = 1;
+      private int power_ ;
       public boolean hasPower() {
-        return result.hasPower();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getPower() {
-        return result.getPower();
+        return power_;
       }
       public Builder setPower(int value) {
-        result.hasPower = true;
-        result.power_ = value;
+        bitField0_ |= 0x00000001;
+        power_ = value;
+        onChanged();
         return this;
       }
       public Builder clearPower() {
-        result.hasPower = false;
-        result.power_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        power_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 count = 2;
+      private int count_ ;
       public boolean hasCount() {
-        return result.hasCount();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getCount() {
-        return result.getCount();
+        return count_;
       }
       public Builder setCount(int value) {
-        result.hasCount = true;
-        result.count_ = value;
+        bitField0_ |= 0x00000002;
+        count_ = value;
+        onChanged();
         return this;
       }
       public Builder clearCount() {
-        result.hasCount = false;
-        result.count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        onChanged();
         return this;
       }
       
@@ -1104,19 +1433,36 @@ public final class Openbeacon {
     
     static {
       defaultInstance = new ObProximityTagPower(true);
-      Openbeacon.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:ObProximityTagPower)
   }
   
+  public interface ObProximityTagOrBuilder extends
+      com.google.protobuf.GeneratedMessage.
+          ExtendableMessageOrBuilder<ObProximityTag> {
+    
+    // required uint32 id = 1;
+    boolean hasId();
+    int getId();
+    
+    // repeated .ObProximityTagPower power = 2;
+    java.util.List<Openbeacon.ObProximityTagPower> 
+        getPowerList();
+    Openbeacon.ObProximityTagPower getPower(int index);
+    int getPowerCount();
+    java.util.List<? extends Openbeacon.ObProximityTagPowerOrBuilder> 
+        getPowerOrBuilderList();
+    Openbeacon.ObProximityTagPowerOrBuilder getPowerOrBuilder(
+        int index);
+  }
   public static final class ObProximityTag extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        ObProximityTag> {
+        ObProximityTag> implements ObProximityTagOrBuilder {
     // Use ObProximityTag.newBuilder() to construct.
-    private ObProximityTag() {
-      initFields();
+    private ObProximityTag(Builder builder) {
+      super(builder);
     }
     private ObProximityTag(boolean noInit) {}
     
@@ -1139,46 +1485,76 @@ public final class Openbeacon {
       return Openbeacon.internal_static_ObProximityTag_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required uint32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
-    private boolean hasId;
-    private int id_ = 0;
-    public boolean hasId() { return hasId; }
-    public int getId() { return id_; }
+    private int id_;
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getId() {
+      return id_;
+    }
     
     // repeated .ObProximityTagPower power = 2;
     public static final int POWER_FIELD_NUMBER = 2;
-    private java.util.List<Openbeacon.ObProximityTagPower> power_ =
-      java.util.Collections.emptyList();
+    private java.util.List<Openbeacon.ObProximityTagPower> power_;
     public java.util.List<Openbeacon.ObProximityTagPower> getPowerList() {
       return power_;
     }
-    public int getPowerCount() { return power_.size(); }
+    public java.util.List<? extends Openbeacon.ObProximityTagPowerOrBuilder> 
+        getPowerOrBuilderList() {
+      return power_;
+    }
+    public int getPowerCount() {
+      return power_.size();
+    }
     public Openbeacon.ObProximityTagPower getPower(int index) {
+      return power_.get(index);
+    }
+    public Openbeacon.ObProximityTagPowerOrBuilder getPowerOrBuilder(
+        int index) {
       return power_.get(index);
     }
     
     private void initFields() {
+      id_ = 0;
+      power_ = java.util.Collections.emptyList();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasId) return false;
-      for (Openbeacon.ObProximityTagPower element : getPowerList()) {
-        if (!element.isInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
       }
-      if (!extensionsAreInitialized()) return false;
+      for (int i = 0; i < getPowerCount(); i++) {
+        if (!getPower(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (!extensionsAreInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      com.google.protobuf.GeneratedMessage.ExtendableMessage
-        .ExtensionWriter extensionWriter = newExtensionWriter();
-      if (hasId()) {
-        output.writeUInt32(1, getId());
+      com.google.protobuf.GeneratedMessage
+        .ExtendableMessage<Openbeacon.ObProximityTag>.ExtensionWriter extensionWriter =
+          newExtensionWriter();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, id_);
       }
-      for (Openbeacon.ObProximityTagPower element : getPowerList()) {
-        output.writeMessage(2, element);
+      for (int i = 0; i < power_.size(); i++) {
+        output.writeMessage(2, power_.get(i));
       }
       extensionWriter.writeUntil(128, output);
       getUnknownFields().writeTo(output);
@@ -1190,18 +1566,25 @@ public final class Openbeacon {
       if (size != -1) return size;
     
       size = 0;
-      if (hasId()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, getId());
+          .computeUInt32Size(1, id_);
       }
-      for (Openbeacon.ObProximityTagPower element : getPowerList()) {
+      for (int i = 0; i < power_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, element);
+          .computeMessageSize(2, power_.get(i));
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static Openbeacon.ObProximityTag parseFrom(
@@ -1278,35 +1661,58 @@ public final class Openbeacon {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          Openbeacon.ObProximityTag, Builder> {
-      private Openbeacon.ObProximityTag result;
-      
-      // Construct using Openbeacon.ObProximityTag.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new Openbeacon.ObProximityTag();
-        return builder;
+          Openbeacon.ObProximityTag, Builder> implements Openbeacon.ObProximityTagOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Openbeacon.internal_static_ObProximityTag_descriptor;
       }
       
-      protected Openbeacon.ObProximityTag internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Openbeacon.internal_static_ObProximityTag_fieldAccessorTable;
+      }
+      
+      // Construct using Openbeacon.ObProximityTag.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPowerFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (powerBuilder_ == null) {
+          power_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          powerBuilder_.clear();
         }
-        result = new Openbeacon.ObProximityTag();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1318,37 +1724,44 @@ public final class Openbeacon {
         return Openbeacon.ObProximityTag.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public Openbeacon.ObProximityTag build() {
-        if (result != null && !isInitialized()) {
+        Openbeacon.ObProximityTag result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private Openbeacon.ObProximityTag buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        Openbeacon.ObProximityTag result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public Openbeacon.ObProximityTag buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        Openbeacon.ObProximityTag result = new Openbeacon.ObProximityTag(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.power_ != java.util.Collections.EMPTY_LIST) {
-          result.power_ =
-            java.util.Collections.unmodifiableList(result.power_);
+        result.id_ = id_;
+        if (powerBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            power_ = java.util.Collections.unmodifiableList(power_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.power_ = power_;
+        } else {
+          result.power_ = powerBuilder_.build();
         }
-        Openbeacon.ObProximityTag returnMe = result;
-        result = null;
-        return returnMe;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1365,15 +1778,53 @@ public final class Openbeacon {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (!other.power_.isEmpty()) {
-          if (result.power_.isEmpty()) {
-            result.power_ = new java.util.ArrayList<Openbeacon.ObProximityTagPower>();
+        if (powerBuilder_ == null) {
+          if (!other.power_.isEmpty()) {
+            if (power_.isEmpty()) {
+              power_ = other.power_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensurePowerIsMutable();
+              power_.addAll(other.power_);
+            }
+            onChanged();
           }
-          result.power_.addAll(other.power_);
+        } else {
+          if (!other.power_.isEmpty()) {
+            if (powerBuilder_.isEmpty()) {
+              powerBuilder_.dispose();
+              powerBuilder_ = null;
+              power_ = other.power_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              powerBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getPowerFieldBuilder() : null;
+            } else {
+              powerBuilder_.addAllMessages(other.power_);
+            }
+          }
         }
         this.mergeExtensionFields(other);
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getPowerCount(); i++) {
+          if (!getPower(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (!extensionsAreInitialized()) {
+          
+          return false;
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -1388,17 +1839,20 @@ public final class Openbeacon {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setId(input.readUInt32());
+              bitField0_ |= 0x00000001;
+              id_ = input.readUInt32();
               break;
             }
             case 18: {
@@ -1411,74 +1865,213 @@ public final class Openbeacon {
         }
       }
       
+      private int bitField0_;
       
       // required uint32 id = 1;
+      private int id_ ;
       public boolean hasId() {
-        return result.hasId();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getId() {
-        return result.getId();
+        return id_;
       }
       public Builder setId(int value) {
-        result.hasId = true;
-        result.id_ = value;
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
         return this;
       }
       public Builder clearId() {
-        result.hasId = false;
-        result.id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
         return this;
       }
       
       // repeated .ObProximityTagPower power = 2;
+      private java.util.List<Openbeacon.ObProximityTagPower> power_ =
+        java.util.Collections.emptyList();
+      private void ensurePowerIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          power_ = new java.util.ArrayList<Openbeacon.ObProximityTagPower>(power_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Openbeacon.ObProximityTagPower, Openbeacon.ObProximityTagPower.Builder, Openbeacon.ObProximityTagPowerOrBuilder> powerBuilder_;
+      
       public java.util.List<Openbeacon.ObProximityTagPower> getPowerList() {
-        return java.util.Collections.unmodifiableList(result.power_);
+        if (powerBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(power_);
+        } else {
+          return powerBuilder_.getMessageList();
+        }
       }
       public int getPowerCount() {
-        return result.getPowerCount();
+        if (powerBuilder_ == null) {
+          return power_.size();
+        } else {
+          return powerBuilder_.getCount();
+        }
       }
       public Openbeacon.ObProximityTagPower getPower(int index) {
-        return result.getPower(index);
-      }
-      public Builder setPower(int index, Openbeacon.ObProximityTagPower value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (powerBuilder_ == null) {
+          return power_.get(index);
+        } else {
+          return powerBuilder_.getMessage(index);
         }
-        result.power_.set(index, value);
+      }
+      public Builder setPower(
+          int index, Openbeacon.ObProximityTagPower value) {
+        if (powerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePowerIsMutable();
+          power_.set(index, value);
+          onChanged();
+        } else {
+          powerBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setPower(int index, Openbeacon.ObProximityTagPower.Builder builderForValue) {
-        result.power_.set(index, builderForValue.build());
+      public Builder setPower(
+          int index, Openbeacon.ObProximityTagPower.Builder builderForValue) {
+        if (powerBuilder_ == null) {
+          ensurePowerIsMutable();
+          power_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          powerBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addPower(Openbeacon.ObProximityTagPower value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (powerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePowerIsMutable();
+          power_.add(value);
+          onChanged();
+        } else {
+          powerBuilder_.addMessage(value);
         }
-        if (result.power_.isEmpty()) {
-          result.power_ = new java.util.ArrayList<Openbeacon.ObProximityTagPower>();
-        }
-        result.power_.add(value);
         return this;
       }
-      public Builder addPower(Openbeacon.ObProximityTagPower.Builder builderForValue) {
-        if (result.power_.isEmpty()) {
-          result.power_ = new java.util.ArrayList<Openbeacon.ObProximityTagPower>();
+      public Builder addPower(
+          int index, Openbeacon.ObProximityTagPower value) {
+        if (powerBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePowerIsMutable();
+          power_.add(index, value);
+          onChanged();
+        } else {
+          powerBuilder_.addMessage(index, value);
         }
-        result.power_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addPower(
+          Openbeacon.ObProximityTagPower.Builder builderForValue) {
+        if (powerBuilder_ == null) {
+          ensurePowerIsMutable();
+          power_.add(builderForValue.build());
+          onChanged();
+        } else {
+          powerBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addPower(
+          int index, Openbeacon.ObProximityTagPower.Builder builderForValue) {
+        if (powerBuilder_ == null) {
+          ensurePowerIsMutable();
+          power_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          powerBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllPower(
           java.lang.Iterable<? extends Openbeacon.ObProximityTagPower> values) {
-        if (result.power_.isEmpty()) {
-          result.power_ = new java.util.ArrayList<Openbeacon.ObProximityTagPower>();
+        if (powerBuilder_ == null) {
+          ensurePowerIsMutable();
+          super.addAll(values, power_);
+          onChanged();
+        } else {
+          powerBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.power_);
         return this;
       }
       public Builder clearPower() {
-        result.power_ = java.util.Collections.emptyList();
+        if (powerBuilder_ == null) {
+          power_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          powerBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removePower(int index) {
+        if (powerBuilder_ == null) {
+          ensurePowerIsMutable();
+          power_.remove(index);
+          onChanged();
+        } else {
+          powerBuilder_.remove(index);
+        }
+        return this;
+      }
+      public Openbeacon.ObProximityTagPower.Builder getPowerBuilder(
+          int index) {
+        return getPowerFieldBuilder().getBuilder(index);
+      }
+      public Openbeacon.ObProximityTagPowerOrBuilder getPowerOrBuilder(
+          int index) {
+        if (powerBuilder_ == null) {
+          return power_.get(index);  } else {
+          return powerBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends Openbeacon.ObProximityTagPowerOrBuilder> 
+           getPowerOrBuilderList() {
+        if (powerBuilder_ != null) {
+          return powerBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(power_);
+        }
+      }
+      public Openbeacon.ObProximityTagPower.Builder addPowerBuilder() {
+        return getPowerFieldBuilder().addBuilder(
+            Openbeacon.ObProximityTagPower.getDefaultInstance());
+      }
+      public Openbeacon.ObProximityTagPower.Builder addPowerBuilder(
+          int index) {
+        return getPowerFieldBuilder().addBuilder(
+            index, Openbeacon.ObProximityTagPower.getDefaultInstance());
+      }
+      public java.util.List<Openbeacon.ObProximityTagPower.Builder> 
+           getPowerBuilderList() {
+        return getPowerFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Openbeacon.ObProximityTagPower, Openbeacon.ObProximityTagPower.Builder, Openbeacon.ObProximityTagPowerOrBuilder> 
+          getPowerFieldBuilder() {
+        if (powerBuilder_ == null) {
+          powerBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Openbeacon.ObProximityTagPower, Openbeacon.ObProximityTagPower.Builder, Openbeacon.ObProximityTagPowerOrBuilder>(
+                  power_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          power_ = null;
+        }
+        return powerBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:ObProximityTag)
@@ -1486,19 +2079,40 @@ public final class Openbeacon {
     
     static {
       defaultInstance = new ObProximityTag(true);
-      Openbeacon.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:ObProximityTag)
   }
   
+  public interface ObProximityLogOrBuilder extends
+      com.google.protobuf.GeneratedMessage.
+          ExtendableMessageOrBuilder<ObProximityLog> {
+    
+    // required uint32 time = 1;
+    boolean hasTime();
+    int getTime();
+    
+    // required uint32 duration = 2;
+    boolean hasDuration();
+    int getDuration();
+    
+    // repeated .ObProximityTag tag = 3;
+    java.util.List<Openbeacon.ObProximityTag> 
+        getTagList();
+    Openbeacon.ObProximityTag getTag(int index);
+    int getTagCount();
+    java.util.List<? extends Openbeacon.ObProximityTagOrBuilder> 
+        getTagOrBuilderList();
+    Openbeacon.ObProximityTagOrBuilder getTagOrBuilder(
+        int index);
+  }
   public static final class ObProximityLog extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        ObProximityLog> {
+        ObProximityLog> implements ObProximityLogOrBuilder {
     // Use ObProximityLog.newBuilder() to construct.
-    private ObProximityLog() {
-      initFields();
+    private ObProximityLog(Builder builder) {
+      super(builder);
     }
     private ObProximityLog(boolean noInit) {}
     
@@ -1521,57 +2135,94 @@ public final class Openbeacon {
       return Openbeacon.internal_static_ObProximityLog_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // required uint32 time = 1;
     public static final int TIME_FIELD_NUMBER = 1;
-    private boolean hasTime;
-    private int time_ = 0;
-    public boolean hasTime() { return hasTime; }
-    public int getTime() { return time_; }
+    private int time_;
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getTime() {
+      return time_;
+    }
     
     // required uint32 duration = 2;
     public static final int DURATION_FIELD_NUMBER = 2;
-    private boolean hasDuration;
-    private int duration_ = 0;
-    public boolean hasDuration() { return hasDuration; }
-    public int getDuration() { return duration_; }
+    private int duration_;
+    public boolean hasDuration() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getDuration() {
+      return duration_;
+    }
     
     // repeated .ObProximityTag tag = 3;
     public static final int TAG_FIELD_NUMBER = 3;
-    private java.util.List<Openbeacon.ObProximityTag> tag_ =
-      java.util.Collections.emptyList();
+    private java.util.List<Openbeacon.ObProximityTag> tag_;
     public java.util.List<Openbeacon.ObProximityTag> getTagList() {
       return tag_;
     }
-    public int getTagCount() { return tag_.size(); }
+    public java.util.List<? extends Openbeacon.ObProximityTagOrBuilder> 
+        getTagOrBuilderList() {
+      return tag_;
+    }
+    public int getTagCount() {
+      return tag_.size();
+    }
     public Openbeacon.ObProximityTag getTag(int index) {
+      return tag_.get(index);
+    }
+    public Openbeacon.ObProximityTagOrBuilder getTagOrBuilder(
+        int index) {
       return tag_.get(index);
     }
     
     private void initFields() {
+      time_ = 0;
+      duration_ = 0;
+      tag_ = java.util.Collections.emptyList();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
-      if (!hasTime) return false;
-      if (!hasDuration) return false;
-      for (Openbeacon.ObProximityTag element : getTagList()) {
-        if (!element.isInitialized()) return false;
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasTime()) {
+        memoizedIsInitialized = 0;
+        return false;
       }
-      if (!extensionsAreInitialized()) return false;
+      if (!hasDuration()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getTagCount(); i++) {
+        if (!getTag(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (!extensionsAreInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      com.google.protobuf.GeneratedMessage.ExtendableMessage
-        .ExtensionWriter extensionWriter = newExtensionWriter();
-      if (hasTime()) {
-        output.writeUInt32(1, getTime());
+      com.google.protobuf.GeneratedMessage
+        .ExtendableMessage<Openbeacon.ObProximityLog>.ExtensionWriter extensionWriter =
+          newExtensionWriter();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, time_);
       }
-      if (hasDuration()) {
-        output.writeUInt32(2, getDuration());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, duration_);
       }
-      for (Openbeacon.ObProximityTag element : getTagList()) {
-        output.writeMessage(3, element);
+      for (int i = 0; i < tag_.size(); i++) {
+        output.writeMessage(3, tag_.get(i));
       }
       extensionWriter.writeUntil(128, output);
       getUnknownFields().writeTo(output);
@@ -1583,22 +2234,29 @@ public final class Openbeacon {
       if (size != -1) return size;
     
       size = 0;
-      if (hasTime()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, getTime());
+          .computeUInt32Size(1, time_);
       }
-      if (hasDuration()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, getDuration());
+          .computeUInt32Size(2, duration_);
       }
-      for (Openbeacon.ObProximityTag element : getTagList()) {
+      for (int i = 0; i < tag_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, element);
+          .computeMessageSize(3, tag_.get(i));
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static Openbeacon.ObProximityLog parseFrom(
@@ -1675,35 +2333,60 @@ public final class Openbeacon {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          Openbeacon.ObProximityLog, Builder> {
-      private Openbeacon.ObProximityLog result;
-      
-      // Construct using Openbeacon.ObProximityLog.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new Openbeacon.ObProximityLog();
-        return builder;
+          Openbeacon.ObProximityLog, Builder> implements Openbeacon.ObProximityLogOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Openbeacon.internal_static_ObProximityLog_descriptor;
       }
       
-      protected Openbeacon.ObProximityLog internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Openbeacon.internal_static_ObProximityLog_fieldAccessorTable;
+      }
+      
+      // Construct using Openbeacon.ObProximityLog.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTagFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        time_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        duration_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (tagBuilder_ == null) {
+          tag_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          tagBuilder_.clear();
         }
-        result = new Openbeacon.ObProximityLog();
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -1715,37 +2398,48 @@ public final class Openbeacon {
         return Openbeacon.ObProximityLog.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public Openbeacon.ObProximityLog build() {
-        if (result != null && !isInitialized()) {
+        Openbeacon.ObProximityLog result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private Openbeacon.ObProximityLog buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        Openbeacon.ObProximityLog result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public Openbeacon.ObProximityLog buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        Openbeacon.ObProximityLog result = new Openbeacon.ObProximityLog(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.tag_ != java.util.Collections.EMPTY_LIST) {
-          result.tag_ =
-            java.util.Collections.unmodifiableList(result.tag_);
+        result.time_ = time_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-        Openbeacon.ObProximityLog returnMe = result;
-        result = null;
-        return returnMe;
+        result.duration_ = duration_;
+        if (tagBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            tag_ = java.util.Collections.unmodifiableList(tag_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.tag_ = tag_;
+        } else {
+          result.tag_ = tagBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -1765,15 +2459,57 @@ public final class Openbeacon {
         if (other.hasDuration()) {
           setDuration(other.getDuration());
         }
-        if (!other.tag_.isEmpty()) {
-          if (result.tag_.isEmpty()) {
-            result.tag_ = new java.util.ArrayList<Openbeacon.ObProximityTag>();
+        if (tagBuilder_ == null) {
+          if (!other.tag_.isEmpty()) {
+            if (tag_.isEmpty()) {
+              tag_ = other.tag_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureTagIsMutable();
+              tag_.addAll(other.tag_);
+            }
+            onChanged();
           }
-          result.tag_.addAll(other.tag_);
+        } else {
+          if (!other.tag_.isEmpty()) {
+            if (tagBuilder_.isEmpty()) {
+              tagBuilder_.dispose();
+              tagBuilder_ = null;
+              tag_ = other.tag_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              tagBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTagFieldBuilder() : null;
+            } else {
+              tagBuilder_.addAllMessages(other.tag_);
+            }
+          }
         }
         this.mergeExtensionFields(other);
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasTime()) {
+          
+          return false;
+        }
+        if (!hasDuration()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getTagCount(); i++) {
+          if (!getTag(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (!extensionsAreInitialized()) {
+          
+          return false;
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -1788,21 +2524,25 @@ public final class Openbeacon {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setTime(input.readUInt32());
+              bitField0_ |= 0x00000001;
+              time_ = input.readUInt32();
               break;
             }
             case 16: {
-              setDuration(input.readUInt32());
+              bitField0_ |= 0x00000002;
+              duration_ = input.readUInt32();
               break;
             }
             case 26: {
@@ -1815,92 +2555,234 @@ public final class Openbeacon {
         }
       }
       
+      private int bitField0_;
       
       // required uint32 time = 1;
+      private int time_ ;
       public boolean hasTime() {
-        return result.hasTime();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getTime() {
-        return result.getTime();
+        return time_;
       }
       public Builder setTime(int value) {
-        result.hasTime = true;
-        result.time_ = value;
+        bitField0_ |= 0x00000001;
+        time_ = value;
+        onChanged();
         return this;
       }
       public Builder clearTime() {
-        result.hasTime = false;
-        result.time_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        time_ = 0;
+        onChanged();
         return this;
       }
       
       // required uint32 duration = 2;
+      private int duration_ ;
       public boolean hasDuration() {
-        return result.hasDuration();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getDuration() {
-        return result.getDuration();
+        return duration_;
       }
       public Builder setDuration(int value) {
-        result.hasDuration = true;
-        result.duration_ = value;
+        bitField0_ |= 0x00000002;
+        duration_ = value;
+        onChanged();
         return this;
       }
       public Builder clearDuration() {
-        result.hasDuration = false;
-        result.duration_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        duration_ = 0;
+        onChanged();
         return this;
       }
       
       // repeated .ObProximityTag tag = 3;
+      private java.util.List<Openbeacon.ObProximityTag> tag_ =
+        java.util.Collections.emptyList();
+      private void ensureTagIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          tag_ = new java.util.ArrayList<Openbeacon.ObProximityTag>(tag_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Openbeacon.ObProximityTag, Openbeacon.ObProximityTag.Builder, Openbeacon.ObProximityTagOrBuilder> tagBuilder_;
+      
       public java.util.List<Openbeacon.ObProximityTag> getTagList() {
-        return java.util.Collections.unmodifiableList(result.tag_);
+        if (tagBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tag_);
+        } else {
+          return tagBuilder_.getMessageList();
+        }
       }
       public int getTagCount() {
-        return result.getTagCount();
+        if (tagBuilder_ == null) {
+          return tag_.size();
+        } else {
+          return tagBuilder_.getCount();
+        }
       }
       public Openbeacon.ObProximityTag getTag(int index) {
-        return result.getTag(index);
-      }
-      public Builder setTag(int index, Openbeacon.ObProximityTag value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (tagBuilder_ == null) {
+          return tag_.get(index);
+        } else {
+          return tagBuilder_.getMessage(index);
         }
-        result.tag_.set(index, value);
+      }
+      public Builder setTag(
+          int index, Openbeacon.ObProximityTag value) {
+        if (tagBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTagIsMutable();
+          tag_.set(index, value);
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setTag(int index, Openbeacon.ObProximityTag.Builder builderForValue) {
-        result.tag_.set(index, builderForValue.build());
+      public Builder setTag(
+          int index, Openbeacon.ObProximityTag.Builder builderForValue) {
+        if (tagBuilder_ == null) {
+          ensureTagIsMutable();
+          tag_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tagBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addTag(Openbeacon.ObProximityTag value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (tagBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTagIsMutable();
+          tag_.add(value);
+          onChanged();
+        } else {
+          tagBuilder_.addMessage(value);
         }
-        if (result.tag_.isEmpty()) {
-          result.tag_ = new java.util.ArrayList<Openbeacon.ObProximityTag>();
-        }
-        result.tag_.add(value);
         return this;
       }
-      public Builder addTag(Openbeacon.ObProximityTag.Builder builderForValue) {
-        if (result.tag_.isEmpty()) {
-          result.tag_ = new java.util.ArrayList<Openbeacon.ObProximityTag>();
+      public Builder addTag(
+          int index, Openbeacon.ObProximityTag value) {
+        if (tagBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTagIsMutable();
+          tag_.add(index, value);
+          onChanged();
+        } else {
+          tagBuilder_.addMessage(index, value);
         }
-        result.tag_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addTag(
+          Openbeacon.ObProximityTag.Builder builderForValue) {
+        if (tagBuilder_ == null) {
+          ensureTagIsMutable();
+          tag_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tagBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addTag(
+          int index, Openbeacon.ObProximityTag.Builder builderForValue) {
+        if (tagBuilder_ == null) {
+          ensureTagIsMutable();
+          tag_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tagBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllTag(
           java.lang.Iterable<? extends Openbeacon.ObProximityTag> values) {
-        if (result.tag_.isEmpty()) {
-          result.tag_ = new java.util.ArrayList<Openbeacon.ObProximityTag>();
+        if (tagBuilder_ == null) {
+          ensureTagIsMutable();
+          super.addAll(values, tag_);
+          onChanged();
+        } else {
+          tagBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.tag_);
         return this;
       }
       public Builder clearTag() {
-        result.tag_ = java.util.Collections.emptyList();
+        if (tagBuilder_ == null) {
+          tag_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          tagBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeTag(int index) {
+        if (tagBuilder_ == null) {
+          ensureTagIsMutable();
+          tag_.remove(index);
+          onChanged();
+        } else {
+          tagBuilder_.remove(index);
+        }
+        return this;
+      }
+      public Openbeacon.ObProximityTag.Builder getTagBuilder(
+          int index) {
+        return getTagFieldBuilder().getBuilder(index);
+      }
+      public Openbeacon.ObProximityTagOrBuilder getTagOrBuilder(
+          int index) {
+        if (tagBuilder_ == null) {
+          return tag_.get(index);  } else {
+          return tagBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends Openbeacon.ObProximityTagOrBuilder> 
+           getTagOrBuilderList() {
+        if (tagBuilder_ != null) {
+          return tagBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tag_);
+        }
+      }
+      public Openbeacon.ObProximityTag.Builder addTagBuilder() {
+        return getTagFieldBuilder().addBuilder(
+            Openbeacon.ObProximityTag.getDefaultInstance());
+      }
+      public Openbeacon.ObProximityTag.Builder addTagBuilder(
+          int index) {
+        return getTagFieldBuilder().addBuilder(
+            index, Openbeacon.ObProximityTag.getDefaultInstance());
+      }
+      public java.util.List<Openbeacon.ObProximityTag.Builder> 
+           getTagBuilderList() {
+        return getTagFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Openbeacon.ObProximityTag, Openbeacon.ObProximityTag.Builder, Openbeacon.ObProximityTagOrBuilder> 
+          getTagFieldBuilder() {
+        if (tagBuilder_ == null) {
+          tagBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Openbeacon.ObProximityTag, Openbeacon.ObProximityTag.Builder, Openbeacon.ObProximityTagOrBuilder>(
+                  tag_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          tag_ = null;
+        }
+        return tagBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:ObProximityLog)
@@ -1908,19 +2790,66 @@ public final class Openbeacon {
     
     static {
       defaultInstance = new ObProximityLog(true);
-      Openbeacon.internalForceInit();
       defaultInstance.initFields();
     }
     
     // @@protoc_insertion_point(class_scope:ObProximityLog)
   }
   
+  public interface ObTagOrBuilder extends
+      com.google.protobuf.GeneratedMessage.
+          ExtendableMessageOrBuilder<ObTag> {
+    
+    // optional uint32 tag_id = 1;
+    boolean hasTagId();
+    int getTagId();
+    
+    // optional uint32 tag_time = 2;
+    boolean hasTagTime();
+    int getTagTime();
+    
+    // optional uint32 tag_power_cycles = 3;
+    boolean hasTagPowerCycles();
+    int getTagPowerCycles();
+    
+    // optional uint32 tag_strength = 4;
+    boolean hasTagStrength();
+    int getTagStrength();
+    
+    // repeated uint32 forwarder_id = 5 [packed = true];
+    java.util.List<java.lang.Integer> getForwarderIdList();
+    int getForwarderIdCount();
+    int getForwarderId(int index);
+    
+    // optional uint32 forwarder_storage_time = 6;
+    boolean hasForwarderStorageTime();
+    int getForwarderStorageTime();
+    
+    // optional uint64 rx_time = 7;
+    boolean hasRxTime();
+    long getRxTime();
+    
+    // optional .ObTracking tracking = 14;
+    boolean hasTracking();
+    Openbeacon.ObTracking getTracking();
+    Openbeacon.ObTrackingOrBuilder getTrackingOrBuilder();
+    
+    // repeated .ObProximityLog proximity = 15;
+    java.util.List<Openbeacon.ObProximityLog> 
+        getProximityList();
+    Openbeacon.ObProximityLog getProximity(int index);
+    int getProximityCount();
+    java.util.List<? extends Openbeacon.ObProximityLogOrBuilder> 
+        getProximityOrBuilderList();
+    Openbeacon.ObProximityLogOrBuilder getProximityOrBuilder(
+        int index);
+  }
   public static final class ObTag extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        ObTag> {
+        ObTag> implements ObTagOrBuilder {
     // Use ObTag.newBuilder() to construct.
-    private ObTag() {
-      initFields();
+    private ObTag(Builder builder) {
+      super(builder);
     }
     private ObTag(boolean noInit) {}
     
@@ -1943,124 +2872,188 @@ public final class Openbeacon {
       return Openbeacon.internal_static_ObTag_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // optional uint32 tag_id = 1;
     public static final int TAG_ID_FIELD_NUMBER = 1;
-    private boolean hasTagId;
-    private int tagId_ = 0;
-    public boolean hasTagId() { return hasTagId; }
-    public int getTagId() { return tagId_; }
+    private int tagId_;
+    public boolean hasTagId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getTagId() {
+      return tagId_;
+    }
     
     // optional uint32 tag_time = 2;
     public static final int TAG_TIME_FIELD_NUMBER = 2;
-    private boolean hasTagTime;
-    private int tagTime_ = 0;
-    public boolean hasTagTime() { return hasTagTime; }
-    public int getTagTime() { return tagTime_; }
+    private int tagTime_;
+    public boolean hasTagTime() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getTagTime() {
+      return tagTime_;
+    }
     
     // optional uint32 tag_power_cycles = 3;
     public static final int TAG_POWER_CYCLES_FIELD_NUMBER = 3;
-    private boolean hasTagPowerCycles;
-    private int tagPowerCycles_ = 0;
-    public boolean hasTagPowerCycles() { return hasTagPowerCycles; }
-    public int getTagPowerCycles() { return tagPowerCycles_; }
+    private int tagPowerCycles_;
+    public boolean hasTagPowerCycles() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getTagPowerCycles() {
+      return tagPowerCycles_;
+    }
     
     // optional uint32 tag_strength = 4;
     public static final int TAG_STRENGTH_FIELD_NUMBER = 4;
-    private boolean hasTagStrength;
-    private int tagStrength_ = 0;
-    public boolean hasTagStrength() { return hasTagStrength; }
-    public int getTagStrength() { return tagStrength_; }
+    private int tagStrength_;
+    public boolean hasTagStrength() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public int getTagStrength() {
+      return tagStrength_;
+    }
     
-    // repeated uint32 forwarder_id = 5;
+    // repeated uint32 forwarder_id = 5 [packed = true];
     public static final int FORWARDER_ID_FIELD_NUMBER = 5;
-    private java.util.List<java.lang.Integer> forwarderId_ =
-      java.util.Collections.emptyList();
-    public java.util.List<java.lang.Integer> getForwarderIdList() {
+    private java.util.List<java.lang.Integer> forwarderId_;
+    public java.util.List<java.lang.Integer>
+        getForwarderIdList() {
       return forwarderId_;
     }
-    public int getForwarderIdCount() { return forwarderId_.size(); }
+    public int getForwarderIdCount() {
+      return forwarderId_.size();
+    }
     public int getForwarderId(int index) {
       return forwarderId_.get(index);
     }
+    private int forwarderIdMemoizedSerializedSize = -1;
     
     // optional uint32 forwarder_storage_time = 6;
     public static final int FORWARDER_STORAGE_TIME_FIELD_NUMBER = 6;
-    private boolean hasForwarderStorageTime;
-    private int forwarderStorageTime_ = 0;
-    public boolean hasForwarderStorageTime() { return hasForwarderStorageTime; }
-    public int getForwarderStorageTime() { return forwarderStorageTime_; }
+    private int forwarderStorageTime_;
+    public boolean hasForwarderStorageTime() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public int getForwarderStorageTime() {
+      return forwarderStorageTime_;
+    }
     
     // optional uint64 rx_time = 7;
     public static final int RX_TIME_FIELD_NUMBER = 7;
-    private boolean hasRxTime;
-    private long rxTime_ = 0L;
-    public boolean hasRxTime() { return hasRxTime; }
-    public long getRxTime() { return rxTime_; }
+    private long rxTime_;
+    public boolean hasRxTime() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public long getRxTime() {
+      return rxTime_;
+    }
     
     // optional .ObTracking tracking = 14;
     public static final int TRACKING_FIELD_NUMBER = 14;
-    private boolean hasTracking;
     private Openbeacon.ObTracking tracking_;
-    public boolean hasTracking() { return hasTracking; }
-    public Openbeacon.ObTracking getTracking() { return tracking_; }
+    public boolean hasTracking() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    public Openbeacon.ObTracking getTracking() {
+      return tracking_;
+    }
+    public Openbeacon.ObTrackingOrBuilder getTrackingOrBuilder() {
+      return tracking_;
+    }
     
     // repeated .ObProximityLog proximity = 15;
     public static final int PROXIMITY_FIELD_NUMBER = 15;
-    private java.util.List<Openbeacon.ObProximityLog> proximity_ =
-      java.util.Collections.emptyList();
+    private java.util.List<Openbeacon.ObProximityLog> proximity_;
     public java.util.List<Openbeacon.ObProximityLog> getProximityList() {
       return proximity_;
     }
-    public int getProximityCount() { return proximity_.size(); }
+    public java.util.List<? extends Openbeacon.ObProximityLogOrBuilder> 
+        getProximityOrBuilderList() {
+      return proximity_;
+    }
+    public int getProximityCount() {
+      return proximity_.size();
+    }
     public Openbeacon.ObProximityLog getProximity(int index) {
+      return proximity_.get(index);
+    }
+    public Openbeacon.ObProximityLogOrBuilder getProximityOrBuilder(
+        int index) {
       return proximity_.get(index);
     }
     
     private void initFields() {
+      tagId_ = 0;
+      tagTime_ = 0;
+      tagPowerCycles_ = 0;
+      tagStrength_ = 0;
+      forwarderId_ = java.util.Collections.emptyList();;
+      forwarderStorageTime_ = 0;
+      rxTime_ = 0L;
       tracking_ = Openbeacon.ObTracking.getDefaultInstance();
+      proximity_ = java.util.Collections.emptyList();
     }
+    private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
       if (hasTracking()) {
-        if (!getTracking().isInitialized()) return false;
+        if (!getTracking().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
-      for (Openbeacon.ObProximityLog element : getProximityList()) {
-        if (!element.isInitialized()) return false;
+      for (int i = 0; i < getProximityCount(); i++) {
+        if (!getProximity(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
-      if (!extensionsAreInitialized()) return false;
+      if (!extensionsAreInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
       return true;
     }
     
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      com.google.protobuf.GeneratedMessage.ExtendableMessage
-        .ExtensionWriter extensionWriter = newExtensionWriter();
-      if (hasTagId()) {
-        output.writeUInt32(1, getTagId());
+      com.google.protobuf.GeneratedMessage
+        .ExtendableMessage<Openbeacon.ObTag>.ExtensionWriter extensionWriter =
+          newExtensionWriter();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, tagId_);
       }
-      if (hasTagTime()) {
-        output.writeUInt32(2, getTagTime());
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, tagTime_);
       }
-      if (hasTagPowerCycles()) {
-        output.writeUInt32(3, getTagPowerCycles());
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, tagPowerCycles_);
       }
-      if (hasTagStrength()) {
-        output.writeUInt32(4, getTagStrength());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt32(4, tagStrength_);
       }
-      for (int element : getForwarderIdList()) {
-        output.writeUInt32(5, element);
+      if (getForwarderIdList().size() > 0) {
+        output.writeRawVarint32(42);
+        output.writeRawVarint32(forwarderIdMemoizedSerializedSize);
       }
-      if (hasForwarderStorageTime()) {
-        output.writeUInt32(6, getForwarderStorageTime());
+      for (int i = 0; i < forwarderId_.size(); i++) {
+        output.writeUInt32NoTag(forwarderId_.get(i));
       }
-      if (hasRxTime()) {
-        output.writeUInt64(7, getRxTime());
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(6, forwarderStorageTime_);
       }
-      if (hasTracking()) {
-        output.writeMessage(14, getTracking());
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt64(7, rxTime_);
       }
-      for (Openbeacon.ObProximityLog element : getProximityList()) {
-        output.writeMessage(15, element);
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(14, tracking_);
+      }
+      for (int i = 0; i < proximity_.size(); i++) {
+        output.writeMessage(15, proximity_.get(i));
       }
       extensionWriter.writeUntil(128, output);
       getUnknownFields().writeTo(output);
@@ -2072,51 +3065,63 @@ public final class Openbeacon {
       if (size != -1) return size;
     
       size = 0;
-      if (hasTagId()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, getTagId());
+          .computeUInt32Size(1, tagId_);
       }
-      if (hasTagTime()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, getTagTime());
+          .computeUInt32Size(2, tagTime_);
       }
-      if (hasTagPowerCycles()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, getTagPowerCycles());
+          .computeUInt32Size(3, tagPowerCycles_);
       }
-      if (hasTagStrength()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, getTagStrength());
+          .computeUInt32Size(4, tagStrength_);
       }
       {
         int dataSize = 0;
-        for (int element : getForwarderIdList()) {
+        for (int i = 0; i < forwarderId_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeUInt32SizeNoTag(element);
+            .computeUInt32SizeNoTag(forwarderId_.get(i));
         }
         size += dataSize;
-        size += 1 * getForwarderIdList().size();
+        if (!getForwarderIdList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        forwarderIdMemoizedSerializedSize = dataSize;
       }
-      if (hasForwarderStorageTime()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, getForwarderStorageTime());
+          .computeUInt32Size(6, forwarderStorageTime_);
       }
-      if (hasRxTime()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(7, getRxTime());
+          .computeUInt64Size(7, rxTime_);
       }
-      if (hasTracking()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(14, getTracking());
+          .computeMessageSize(14, tracking_);
       }
-      for (Openbeacon.ObProximityLog element : getProximityList()) {
+      for (int i = 0; i < proximity_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(15, element);
+          .computeMessageSize(15, proximity_.get(i));
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
     }
     
     public static Openbeacon.ObTag parseFrom(
@@ -2193,35 +3198,77 @@ public final class Openbeacon {
     }
     public Builder toBuilder() { return newBuilder(this); }
     
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          Openbeacon.ObTag, Builder> {
-      private Openbeacon.ObTag result;
-      
-      // Construct using Openbeacon.ObTag.newBuilder()
-      private Builder() {}
-      
-      private static Builder create() {
-        Builder builder = new Builder();
-        builder.result = new Openbeacon.ObTag();
-        return builder;
+          Openbeacon.ObTag, Builder> implements Openbeacon.ObTagOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Openbeacon.internal_static_ObTag_descriptor;
       }
       
-      protected Openbeacon.ObTag internalGetResult() {
-        return result;
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Openbeacon.internal_static_ObTag_fieldAccessorTable;
+      }
+      
+      // Construct using Openbeacon.ObTag.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getTrackingFieldBuilder();
+          getProximityFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
       }
       
       public Builder clear() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "Cannot call clear() after build().");
+        super.clear();
+        tagId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        tagTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        tagPowerCycles_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        tagStrength_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        forwarderId_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        forwarderStorageTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        rxTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (trackingBuilder_ == null) {
+          tracking_ = Openbeacon.ObTracking.getDefaultInstance();
+        } else {
+          trackingBuilder_.clear();
         }
-        result = new Openbeacon.ObTag();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (proximityBuilder_ == null) {
+          proximity_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+        } else {
+          proximityBuilder_.clear();
+        }
         return this;
       }
       
       public Builder clone() {
-        return create().mergeFrom(result);
+        return create().mergeFrom(buildPartial());
       }
       
       public com.google.protobuf.Descriptors.Descriptor
@@ -2233,41 +3280,77 @@ public final class Openbeacon {
         return Openbeacon.ObTag.getDefaultInstance();
       }
       
-      public boolean isInitialized() {
-        return result.isInitialized();
-      }
       public Openbeacon.ObTag build() {
-        if (result != null && !isInitialized()) {
+        Openbeacon.ObTag result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
-        return buildPartial();
+        return result;
       }
       
       private Openbeacon.ObTag buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        if (!isInitialized()) {
+        Openbeacon.ObTag result = buildPartial();
+        if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
         }
-        return buildPartial();
+        return result;
       }
       
       public Openbeacon.ObTag buildPartial() {
-        if (result == null) {
-          throw new IllegalStateException(
-            "build() has already been called on this Builder.");
+        Openbeacon.ObTag result = new Openbeacon.ObTag(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
         }
-        if (result.forwarderId_ != java.util.Collections.EMPTY_LIST) {
-          result.forwarderId_ =
-            java.util.Collections.unmodifiableList(result.forwarderId_);
+        result.tagId_ = tagId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
-        if (result.proximity_ != java.util.Collections.EMPTY_LIST) {
-          result.proximity_ =
-            java.util.Collections.unmodifiableList(result.proximity_);
+        result.tagTime_ = tagTime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
-        Openbeacon.ObTag returnMe = result;
-        result = null;
-        return returnMe;
+        result.tagPowerCycles_ = tagPowerCycles_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.tagStrength_ = tagStrength_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          forwarderId_ = java.util.Collections.unmodifiableList(forwarderId_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.forwarderId_ = forwarderId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.forwarderStorageTime_ = forwarderStorageTime_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.rxTime_ = rxTime_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (trackingBuilder_ == null) {
+          result.tracking_ = tracking_;
+        } else {
+          result.tracking_ = trackingBuilder_.build();
+        }
+        if (proximityBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+            proximity_ = java.util.Collections.unmodifiableList(proximity_);
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
+          result.proximity_ = proximity_;
+        } else {
+          result.proximity_ = proximityBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -2294,10 +3377,14 @@ public final class Openbeacon {
           setTagStrength(other.getTagStrength());
         }
         if (!other.forwarderId_.isEmpty()) {
-          if (result.forwarderId_.isEmpty()) {
-            result.forwarderId_ = new java.util.ArrayList<java.lang.Integer>();
+          if (forwarderId_.isEmpty()) {
+            forwarderId_ = other.forwarderId_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureForwarderIdIsMutable();
+            forwarderId_.addAll(other.forwarderId_);
           }
-          result.forwarderId_.addAll(other.forwarderId_);
+          onChanged();
         }
         if (other.hasForwarderStorageTime()) {
           setForwarderStorageTime(other.getForwarderStorageTime());
@@ -2308,15 +3395,55 @@ public final class Openbeacon {
         if (other.hasTracking()) {
           mergeTracking(other.getTracking());
         }
-        if (!other.proximity_.isEmpty()) {
-          if (result.proximity_.isEmpty()) {
-            result.proximity_ = new java.util.ArrayList<Openbeacon.ObProximityLog>();
+        if (proximityBuilder_ == null) {
+          if (!other.proximity_.isEmpty()) {
+            if (proximity_.isEmpty()) {
+              proximity_ = other.proximity_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensureProximityIsMutable();
+              proximity_.addAll(other.proximity_);
+            }
+            onChanged();
           }
-          result.proximity_.addAll(other.proximity_);
+        } else {
+          if (!other.proximity_.isEmpty()) {
+            if (proximityBuilder_.isEmpty()) {
+              proximityBuilder_.dispose();
+              proximityBuilder_ = null;
+              proximity_ = other.proximity_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+              proximityBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getProximityFieldBuilder() : null;
+            } else {
+              proximityBuilder_.addAllMessages(other.proximity_);
+            }
+          }
         }
         this.mergeExtensionFields(other);
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (hasTracking()) {
+          if (!getTracking().isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getProximityCount(); i++) {
+          if (!getProximity(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (!extensionsAreInitialized()) {
+          
+          return false;
+        }
+        return true;
       }
       
       public Builder mergeFrom(
@@ -2331,33 +3458,40 @@ public final class Openbeacon {
           switch (tag) {
             case 0:
               this.setUnknownFields(unknownFields.build());
+              onChanged();
               return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
                 this.setUnknownFields(unknownFields.build());
+                onChanged();
                 return this;
               }
               break;
             }
             case 8: {
-              setTagId(input.readUInt32());
+              bitField0_ |= 0x00000001;
+              tagId_ = input.readUInt32();
               break;
             }
             case 16: {
-              setTagTime(input.readUInt32());
+              bitField0_ |= 0x00000002;
+              tagTime_ = input.readUInt32();
               break;
             }
             case 24: {
-              setTagPowerCycles(input.readUInt32());
+              bitField0_ |= 0x00000004;
+              tagPowerCycles_ = input.readUInt32();
               break;
             }
             case 32: {
-              setTagStrength(input.readUInt32());
+              bitField0_ |= 0x00000008;
+              tagStrength_ = input.readUInt32();
               break;
             }
             case 40: {
-              addForwarderId(input.readUInt32());
+              ensureForwarderIdIsMutable();
+              forwarderId_.add(input.readUInt32());
               break;
             }
             case 42: {
@@ -2370,11 +3504,13 @@ public final class Openbeacon {
               break;
             }
             case 48: {
-              setForwarderStorageTime(input.readUInt32());
+              bitField0_ |= 0x00000020;
+              forwarderStorageTime_ = input.readUInt32();
               break;
             }
             case 56: {
-              setRxTime(input.readUInt64());
+              bitField0_ |= 0x00000040;
+              rxTime_ = input.readUInt64();
               break;
             }
             case 114: {
@@ -2396,235 +3532,453 @@ public final class Openbeacon {
         }
       }
       
+      private int bitField0_;
       
       // optional uint32 tag_id = 1;
+      private int tagId_ ;
       public boolean hasTagId() {
-        return result.hasTagId();
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public int getTagId() {
-        return result.getTagId();
+        return tagId_;
       }
       public Builder setTagId(int value) {
-        result.hasTagId = true;
-        result.tagId_ = value;
+        bitField0_ |= 0x00000001;
+        tagId_ = value;
+        onChanged();
         return this;
       }
       public Builder clearTagId() {
-        result.hasTagId = false;
-        result.tagId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        tagId_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 tag_time = 2;
+      private int tagTime_ ;
       public boolean hasTagTime() {
-        return result.hasTagTime();
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       public int getTagTime() {
-        return result.getTagTime();
+        return tagTime_;
       }
       public Builder setTagTime(int value) {
-        result.hasTagTime = true;
-        result.tagTime_ = value;
+        bitField0_ |= 0x00000002;
+        tagTime_ = value;
+        onChanged();
         return this;
       }
       public Builder clearTagTime() {
-        result.hasTagTime = false;
-        result.tagTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        tagTime_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 tag_power_cycles = 3;
+      private int tagPowerCycles_ ;
       public boolean hasTagPowerCycles() {
-        return result.hasTagPowerCycles();
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       public int getTagPowerCycles() {
-        return result.getTagPowerCycles();
+        return tagPowerCycles_;
       }
       public Builder setTagPowerCycles(int value) {
-        result.hasTagPowerCycles = true;
-        result.tagPowerCycles_ = value;
+        bitField0_ |= 0x00000004;
+        tagPowerCycles_ = value;
+        onChanged();
         return this;
       }
       public Builder clearTagPowerCycles() {
-        result.hasTagPowerCycles = false;
-        result.tagPowerCycles_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        tagPowerCycles_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint32 tag_strength = 4;
+      private int tagStrength_ ;
       public boolean hasTagStrength() {
-        return result.hasTagStrength();
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       public int getTagStrength() {
-        return result.getTagStrength();
+        return tagStrength_;
       }
       public Builder setTagStrength(int value) {
-        result.hasTagStrength = true;
-        result.tagStrength_ = value;
+        bitField0_ |= 0x00000008;
+        tagStrength_ = value;
+        onChanged();
         return this;
       }
       public Builder clearTagStrength() {
-        result.hasTagStrength = false;
-        result.tagStrength_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        tagStrength_ = 0;
+        onChanged();
         return this;
       }
       
-      // repeated uint32 forwarder_id = 5;
-      public java.util.List<java.lang.Integer> getForwarderIdList() {
-        return java.util.Collections.unmodifiableList(result.forwarderId_);
+      // repeated uint32 forwarder_id = 5 [packed = true];
+      private java.util.List<java.lang.Integer> forwarderId_ = java.util.Collections.emptyList();;
+      private void ensureForwarderIdIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          forwarderId_ = new java.util.ArrayList<java.lang.Integer>(forwarderId_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getForwarderIdList() {
+        return java.util.Collections.unmodifiableList(forwarderId_);
       }
       public int getForwarderIdCount() {
-        return result.getForwarderIdCount();
+        return forwarderId_.size();
       }
       public int getForwarderId(int index) {
-        return result.getForwarderId(index);
+        return forwarderId_.get(index);
       }
-      public Builder setForwarderId(int index, int value) {
-        result.forwarderId_.set(index, value);
+      public Builder setForwarderId(
+          int index, int value) {
+        ensureForwarderIdIsMutable();
+        forwarderId_.set(index, value);
+        onChanged();
         return this;
       }
       public Builder addForwarderId(int value) {
-        if (result.forwarderId_.isEmpty()) {
-          result.forwarderId_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        result.forwarderId_.add(value);
+        ensureForwarderIdIsMutable();
+        forwarderId_.add(value);
+        onChanged();
         return this;
       }
       public Builder addAllForwarderId(
           java.lang.Iterable<? extends java.lang.Integer> values) {
-        if (result.forwarderId_.isEmpty()) {
-          result.forwarderId_ = new java.util.ArrayList<java.lang.Integer>();
-        }
-        super.addAll(values, result.forwarderId_);
+        ensureForwarderIdIsMutable();
+        super.addAll(values, forwarderId_);
+        onChanged();
         return this;
       }
       public Builder clearForwarderId() {
-        result.forwarderId_ = java.util.Collections.emptyList();
+        forwarderId_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
         return this;
       }
       
       // optional uint32 forwarder_storage_time = 6;
+      private int forwarderStorageTime_ ;
       public boolean hasForwarderStorageTime() {
-        return result.hasForwarderStorageTime();
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       public int getForwarderStorageTime() {
-        return result.getForwarderStorageTime();
+        return forwarderStorageTime_;
       }
       public Builder setForwarderStorageTime(int value) {
-        result.hasForwarderStorageTime = true;
-        result.forwarderStorageTime_ = value;
+        bitField0_ |= 0x00000020;
+        forwarderStorageTime_ = value;
+        onChanged();
         return this;
       }
       public Builder clearForwarderStorageTime() {
-        result.hasForwarderStorageTime = false;
-        result.forwarderStorageTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        forwarderStorageTime_ = 0;
+        onChanged();
         return this;
       }
       
       // optional uint64 rx_time = 7;
+      private long rxTime_ ;
       public boolean hasRxTime() {
-        return result.hasRxTime();
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       public long getRxTime() {
-        return result.getRxTime();
+        return rxTime_;
       }
       public Builder setRxTime(long value) {
-        result.hasRxTime = true;
-        result.rxTime_ = value;
+        bitField0_ |= 0x00000040;
+        rxTime_ = value;
+        onChanged();
         return this;
       }
       public Builder clearRxTime() {
-        result.hasRxTime = false;
-        result.rxTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        rxTime_ = 0L;
+        onChanged();
         return this;
       }
       
       // optional .ObTracking tracking = 14;
+      private Openbeacon.ObTracking tracking_ = Openbeacon.ObTracking.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          Openbeacon.ObTracking, Openbeacon.ObTracking.Builder, Openbeacon.ObTrackingOrBuilder> trackingBuilder_;
       public boolean hasTracking() {
-        return result.hasTracking();
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       public Openbeacon.ObTracking getTracking() {
-        return result.getTracking();
+        if (trackingBuilder_ == null) {
+          return tracking_;
+        } else {
+          return trackingBuilder_.getMessage();
+        }
       }
       public Builder setTracking(Openbeacon.ObTracking value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (trackingBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          tracking_ = value;
+          onChanged();
+        } else {
+          trackingBuilder_.setMessage(value);
         }
-        result.hasTracking = true;
-        result.tracking_ = value;
+        bitField0_ |= 0x00000080;
         return this;
       }
-      public Builder setTracking(Openbeacon.ObTracking.Builder builderForValue) {
-        result.hasTracking = true;
-        result.tracking_ = builderForValue.build();
+      public Builder setTracking(
+          Openbeacon.ObTracking.Builder builderForValue) {
+        if (trackingBuilder_ == null) {
+          tracking_ = builderForValue.build();
+          onChanged();
+        } else {
+          trackingBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
         return this;
       }
       public Builder mergeTracking(Openbeacon.ObTracking value) {
-        if (result.hasTracking() &&
-            result.tracking_ != Openbeacon.ObTracking.getDefaultInstance()) {
-          result.tracking_ =
-            Openbeacon.ObTracking.newBuilder(result.tracking_).mergeFrom(value).buildPartial();
+        if (trackingBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+              tracking_ != Openbeacon.ObTracking.getDefaultInstance()) {
+            tracking_ =
+              Openbeacon.ObTracking.newBuilder(tracking_).mergeFrom(value).buildPartial();
+          } else {
+            tracking_ = value;
+          }
+          onChanged();
         } else {
-          result.tracking_ = value;
+          trackingBuilder_.mergeFrom(value);
         }
-        result.hasTracking = true;
+        bitField0_ |= 0x00000080;
         return this;
       }
       public Builder clearTracking() {
-        result.hasTracking = false;
-        result.tracking_ = Openbeacon.ObTracking.getDefaultInstance();
+        if (trackingBuilder_ == null) {
+          tracking_ = Openbeacon.ObTracking.getDefaultInstance();
+          onChanged();
+        } else {
+          trackingBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
+      }
+      public Openbeacon.ObTracking.Builder getTrackingBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getTrackingFieldBuilder().getBuilder();
+      }
+      public Openbeacon.ObTrackingOrBuilder getTrackingOrBuilder() {
+        if (trackingBuilder_ != null) {
+          return trackingBuilder_.getMessageOrBuilder();
+        } else {
+          return tracking_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          Openbeacon.ObTracking, Openbeacon.ObTracking.Builder, Openbeacon.ObTrackingOrBuilder> 
+          getTrackingFieldBuilder() {
+        if (trackingBuilder_ == null) {
+          trackingBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              Openbeacon.ObTracking, Openbeacon.ObTracking.Builder, Openbeacon.ObTrackingOrBuilder>(
+                  tracking_,
+                  getParentForChildren(),
+                  isClean());
+          tracking_ = null;
+        }
+        return trackingBuilder_;
       }
       
       // repeated .ObProximityLog proximity = 15;
+      private java.util.List<Openbeacon.ObProximityLog> proximity_ =
+        java.util.Collections.emptyList();
+      private void ensureProximityIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          proximity_ = new java.util.ArrayList<Openbeacon.ObProximityLog>(proximity_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Openbeacon.ObProximityLog, Openbeacon.ObProximityLog.Builder, Openbeacon.ObProximityLogOrBuilder> proximityBuilder_;
+      
       public java.util.List<Openbeacon.ObProximityLog> getProximityList() {
-        return java.util.Collections.unmodifiableList(result.proximity_);
+        if (proximityBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(proximity_);
+        } else {
+          return proximityBuilder_.getMessageList();
+        }
       }
       public int getProximityCount() {
-        return result.getProximityCount();
+        if (proximityBuilder_ == null) {
+          return proximity_.size();
+        } else {
+          return proximityBuilder_.getCount();
+        }
       }
       public Openbeacon.ObProximityLog getProximity(int index) {
-        return result.getProximity(index);
-      }
-      public Builder setProximity(int index, Openbeacon.ObProximityLog value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (proximityBuilder_ == null) {
+          return proximity_.get(index);
+        } else {
+          return proximityBuilder_.getMessage(index);
         }
-        result.proximity_.set(index, value);
+      }
+      public Builder setProximity(
+          int index, Openbeacon.ObProximityLog value) {
+        if (proximityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProximityIsMutable();
+          proximity_.set(index, value);
+          onChanged();
+        } else {
+          proximityBuilder_.setMessage(index, value);
+        }
         return this;
       }
-      public Builder setProximity(int index, Openbeacon.ObProximityLog.Builder builderForValue) {
-        result.proximity_.set(index, builderForValue.build());
+      public Builder setProximity(
+          int index, Openbeacon.ObProximityLog.Builder builderForValue) {
+        if (proximityBuilder_ == null) {
+          ensureProximityIsMutable();
+          proximity_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          proximityBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addProximity(Openbeacon.ObProximityLog value) {
-        if (value == null) {
-          throw new NullPointerException();
+        if (proximityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProximityIsMutable();
+          proximity_.add(value);
+          onChanged();
+        } else {
+          proximityBuilder_.addMessage(value);
         }
-        if (result.proximity_.isEmpty()) {
-          result.proximity_ = new java.util.ArrayList<Openbeacon.ObProximityLog>();
-        }
-        result.proximity_.add(value);
         return this;
       }
-      public Builder addProximity(Openbeacon.ObProximityLog.Builder builderForValue) {
-        if (result.proximity_.isEmpty()) {
-          result.proximity_ = new java.util.ArrayList<Openbeacon.ObProximityLog>();
+      public Builder addProximity(
+          int index, Openbeacon.ObProximityLog value) {
+        if (proximityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureProximityIsMutable();
+          proximity_.add(index, value);
+          onChanged();
+        } else {
+          proximityBuilder_.addMessage(index, value);
         }
-        result.proximity_.add(builderForValue.build());
+        return this;
+      }
+      public Builder addProximity(
+          Openbeacon.ObProximityLog.Builder builderForValue) {
+        if (proximityBuilder_ == null) {
+          ensureProximityIsMutable();
+          proximity_.add(builderForValue.build());
+          onChanged();
+        } else {
+          proximityBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addProximity(
+          int index, Openbeacon.ObProximityLog.Builder builderForValue) {
+        if (proximityBuilder_ == null) {
+          ensureProximityIsMutable();
+          proximity_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          proximityBuilder_.addMessage(index, builderForValue.build());
+        }
         return this;
       }
       public Builder addAllProximity(
           java.lang.Iterable<? extends Openbeacon.ObProximityLog> values) {
-        if (result.proximity_.isEmpty()) {
-          result.proximity_ = new java.util.ArrayList<Openbeacon.ObProximityLog>();
+        if (proximityBuilder_ == null) {
+          ensureProximityIsMutable();
+          super.addAll(values, proximity_);
+          onChanged();
+        } else {
+          proximityBuilder_.addAllMessages(values);
         }
-        super.addAll(values, result.proximity_);
         return this;
       }
       public Builder clearProximity() {
-        result.proximity_ = java.util.Collections.emptyList();
+        if (proximityBuilder_ == null) {
+          proximity_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+          onChanged();
+        } else {
+          proximityBuilder_.clear();
+        }
         return this;
+      }
+      public Builder removeProximity(int index) {
+        if (proximityBuilder_ == null) {
+          ensureProximityIsMutable();
+          proximity_.remove(index);
+          onChanged();
+        } else {
+          proximityBuilder_.remove(index);
+        }
+        return this;
+      }
+      public Openbeacon.ObProximityLog.Builder getProximityBuilder(
+          int index) {
+        return getProximityFieldBuilder().getBuilder(index);
+      }
+      public Openbeacon.ObProximityLogOrBuilder getProximityOrBuilder(
+          int index) {
+        if (proximityBuilder_ == null) {
+          return proximity_.get(index);  } else {
+          return proximityBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends Openbeacon.ObProximityLogOrBuilder> 
+           getProximityOrBuilderList() {
+        if (proximityBuilder_ != null) {
+          return proximityBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(proximity_);
+        }
+      }
+      public Openbeacon.ObProximityLog.Builder addProximityBuilder() {
+        return getProximityFieldBuilder().addBuilder(
+            Openbeacon.ObProximityLog.getDefaultInstance());
+      }
+      public Openbeacon.ObProximityLog.Builder addProximityBuilder(
+          int index) {
+        return getProximityFieldBuilder().addBuilder(
+            index, Openbeacon.ObProximityLog.getDefaultInstance());
+      }
+      public java.util.List<Openbeacon.ObProximityLog.Builder> 
+           getProximityBuilderList() {
+        return getProximityFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          Openbeacon.ObProximityLog, Openbeacon.ObProximityLog.Builder, Openbeacon.ObProximityLogOrBuilder> 
+          getProximityFieldBuilder() {
+        if (proximityBuilder_ == null) {
+          proximityBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Openbeacon.ObProximityLog, Openbeacon.ObProximityLog.Builder, Openbeacon.ObProximityLogOrBuilder>(
+                  proximity_,
+                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  getParentForChildren(),
+                  isClean());
+          proximity_ = null;
+        }
+        return proximityBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:ObTag)
@@ -2632,7 +3986,6 @@ public final class Openbeacon {
     
     static {
       defaultInstance = new ObTag(true);
-      Openbeacon.internalForceInit();
       defaultInstance.initFields();
     }
     
@@ -2673,28 +4026,28 @@ public final class Openbeacon {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020openbeacon.proto\"\303\001\n\nObTracking\022\t\n\001x\030\001" +
+      "\n\020openbeacon.proto\"\307\001\n\nObTracking\022\t\n\001x\030\001" +
       " \001(\021\022\t\n\001y\030\002 \001(\021\022\t\n\001z\030\003 \001(\021\022\025\n\004unit\030\004 \001(\016" +
-      "2\007.ObUnit\022\021\n\treader_id\030\005 \003(\r\022\023\n\013tx_stren" +
-      "gth\030\006 \001(\r\022\017\n\007area_id\030\007 \001(\r\022\017\n\007room_id\030\010 " +
-      "\001(\r\022\023\n\013building_id\030\t \001(\r\022\027\n\017installation" +
-      "_id\030\n \001(\r*\005\010d\020\200\001\":\n\023ObProximityTagPower\022" +
-      "\r\n\005power\030\001 \001(\r\022\r\n\005count\030\002 \001(\r*\005\010d\020\200\001\"H\n\016" +
-      "ObProximityTag\022\n\n\002id\030\001 \002(\r\022#\n\005power\030\002 \003(" +
-      "\0132\024.ObProximityTagPower*\005\010d\020\200\001\"U\n\016ObProx" +
-      "imityLog\022\014\n\004time\030\001 \002(\r\022\020\n\010duration\030\002 \002(\r",
-      "\022\034\n\003tag\030\003 \003(\0132\017.ObProximityTag*\005\010d\020\200\001\"\352\001" +
-      "\n\005ObTag\022\016\n\006tag_id\030\001 \001(\r\022\020\n\010tag_time\030\002 \001(" +
-      "\r\022\030\n\020tag_power_cycles\030\003 \001(\r\022\024\n\014tag_stren" +
-      "gth\030\004 \001(\r\022\024\n\014forwarder_id\030\005 \003(\r\022\036\n\026forwa" +
-      "rder_storage_time\030\006 \001(\r\022\017\n\007rx_time\030\007 \001(\004" +
-      "\022\035\n\010tracking\030\016 \001(\0132\013.ObTracking\022\"\n\tproxi" +
-      "mity\030\017 \003(\0132\017.ObProximityLog*\005\010d\020\200\001*\246\001\n\006O" +
-      "bUnit\022\020\n\014OB_UNIT_NONE\020\000\022\021\n\rOB_UNIT_PIXEL" +
-      "\020\001\022\026\n\022OB_UNIT_MILLIMETER\020\002\022\026\n\022OB_UNIT_CE" +
-      "NTIMETER\020\003\022\021\n\rOB_UNIT_METER\020\004\022\020\n\014OB_UNIT",
-      "_INCH\020\005\022\020\n\014OB_UNIT_FEET\020\006\022\020\n\014OB_UNIT_YAR" +
-      "D\020\007"
+      "2\007.ObUnit\022\025\n\treader_id\030\005 \003(\rB\002\020\001\022\023\n\013tx_s" +
+      "trength\030\006 \001(\r\022\017\n\007area_id\030\007 \001(\r\022\017\n\007room_i" +
+      "d\030\010 \001(\r\022\023\n\013building_id\030\t \001(\r\022\027\n\017installa" +
+      "tion_id\030\n \001(\r*\005\010d\020\200\001\":\n\023ObProximityTagPo" +
+      "wer\022\r\n\005power\030\001 \001(\r\022\r\n\005count\030\002 \001(\r*\005\010d\020\200\001" +
+      "\"H\n\016ObProximityTag\022\n\n\002id\030\001 \002(\r\022#\n\005power\030" +
+      "\002 \003(\0132\024.ObProximityTagPower*\005\010d\020\200\001\"U\n\016Ob" +
+      "ProximityLog\022\014\n\004time\030\001 \002(\r\022\020\n\010duration\030\002",
+      " \002(\r\022\034\n\003tag\030\003 \003(\0132\017.ObProximityTag*\005\010d\020\200" +
+      "\001\"\356\001\n\005ObTag\022\016\n\006tag_id\030\001 \001(\r\022\020\n\010tag_time\030" +
+      "\002 \001(\r\022\030\n\020tag_power_cycles\030\003 \001(\r\022\024\n\014tag_s" +
+      "trength\030\004 \001(\r\022\030\n\014forwarder_id\030\005 \003(\rB\002\020\001\022" +
+      "\036\n\026forwarder_storage_time\030\006 \001(\r\022\017\n\007rx_ti" +
+      "me\030\007 \001(\004\022\035\n\010tracking\030\016 \001(\0132\013.ObTracking\022" +
+      "\"\n\tproximity\030\017 \003(\0132\017.ObProximityLog*\005\010d\020" +
+      "\200\001*\246\001\n\006ObUnit\022\020\n\014OB_UNIT_NONE\020\000\022\021\n\rOB_UN" +
+      "IT_PIXEL\020\001\022\026\n\022OB_UNIT_MILLIMETER\020\002\022\026\n\022OB" +
+      "_UNIT_CENTIMETER\020\003\022\021\n\rOB_UNIT_METER\020\004\022\020\n",
+      "\014OB_UNIT_INCH\020\005\022\020\n\014OB_UNIT_FEET\020\006\022\020\n\014OB_" +
+      "UNIT_YARD\020\007"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2749,8 +4102,6 @@ public final class Openbeacon {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-  
-  public static void internalForceInit() {}
   
   // @@protoc_insertion_point(outer_class_scope)
 }
