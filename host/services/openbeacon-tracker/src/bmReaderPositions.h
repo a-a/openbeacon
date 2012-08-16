@@ -38,7 +38,8 @@ static const TReaderItem g_ReaderList[] = {
 	//{addr, room, floor, group, xpos, ypos}
 
  	//CCSR Test Setup
-	{1127, 1, 1, 1, 0, 0},
+	{1112, 1, 1, 1, 100, 100},
+	{1127, 1, 1, 1, 1000, 1000},
 
 	// Mikes Lab: group 8
 	{1020, 1, 1, 8, 855, 522},
